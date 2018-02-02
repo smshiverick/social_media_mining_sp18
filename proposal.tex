@@ -3,12 +3,10 @@
 \input{format/final}
 
 \begin{document}
-\title{Big Data for Edge Computing}
+\title{Mapping the Social Network of Prescription Opioid Misuse on Twitter}
 
 
-\author{Liz Supinski}
-\author{Nandita Sathe} 
-\author{Sean M. Shiverick}
+\author{Liz Supinski, Nandita Sathe, Sean M. Shiverick}
 \affiliation{%
   \institution{Indiana University-Bloomington}
 }
@@ -18,11 +16,11 @@
 \renewcommand{\shortauthors}{Supinski, Sathe, Shiverick}
 
 
-#\begin{abstract}
-#This paper provides a sample of a \LaTeX\ document which conforms,
-#somewhat loosely, to the formatting guidelines for
-#ACM SIG Proceedings.
-#\end{abstract}
+%\begin{abstract}
+%This paper provides a sample of a \LaTeX\ document which conforms,
+%somewhat loosely, to the formatting guidelines for
+%ACM SIG Proceedings.
+%\end{abstract}
 
 \keywords{Big Data, Edge Computing i523}
 
@@ -36,173 +34,43 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-PROPOSAL DRAFT
-Working Title: Mapping the Social Network of Prescription Opioid Misuse on Twitter
-Group 1: Elizabeth Supinski, Nandita Sathe, Sean Shiverick
-
-Proposed Outline:
-Text analysis of Twitter posts related to misuse of prescription opioids (MUPO)
-Visualization of MUPO Twitter users geospatial location
-Network analysis of connections between MUPO Twitter users
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-I. Introduction (1-2 paragraphs) 
-What your main idea is and why it is interesting?
-Clearly identify your topic; define key terms – cite as necessary
-Motivate the study; tell the reader why it is important practically and theoretically
-Identify a problem, e.g., lack of previous research and explain how your research addresses the problem
-Ask a research question that follows from the above
-
-Over the past two decades, prescription opioid abuse and addiction in the U.S. has become a health crisis of epidemic proportion. Since 1999, the number of overdose deaths from prescription opioids such as oxycodone, hydrocodone, and methadone, has more than quadrupled [1,2]. Social media media mining (SMM) has addressed public health concerns by  “infodemiology” and “toxicovigilance”.  For example, researchers have tracked the outbreak of flu epidemics using internet searches and Twitter posts [3,4,5]. Twitter data has also been used to track the expression of migraine headaches [6], detect misuse and abuse of prescription opioids [7,8,9], and monitor illegal online sales of prescription opioids [10]. Much of the evidence showing connections between Twitter posts and health behaviors is correlational; however, the relation between discussion of prescription opioid misuse on Twitter and actual misuse of opioids has not been clearly demonstrated [11]. 
+Over the past two decades, prescription opioid abuse and addiction in the U.S. has become a health crisis of epidemic proportion. Since 1999, the number of overdose deaths from prescription opioids such as oxycodone, hydrocodone, and methadone, has more than quadrupled [1,2]. Social media media mining (SMM) has been used to address public health concerns through “infodemiology” and “toxicovigilance”, which involves informatics for purposes of epidemiology, including strategies for monitoring patterns and prevalence of medication abuse [3, 4]. For example, researchers have tracked the outbreak of flu epidemics using internet searches and Twitter posts [5,6,7]. Twitter data has also been used to track the expression of migraine headaches [8], detect misuse and abuse of prescription opioids [4,9,10], and monitor illegal online sales of prescription opioids [11]. The relationship between Twitter posts and health outcomes is largely correlational, yet some research suggests that discussion of opioid misuse on Twitter may provide reinforcement for actual misuse of opioids [12]. Additional evidence would help to clarify the social network of Twitter users and the contexts of prescription opioid misuse. 
 
 This project seeks to examine the relations among social media users posting content related to the misuse of prescription opioids (MUPO). Mapping social media content related to prescription opioid use may help detect individuals at risk for misusing prescription opioids, and identify factors related to opioid addiction. The main goal of this project is to map the social network of prescription opioid misuse on Twitter. This proposal outlines several steps toward accomplishing this goal, which include: (a) Textual analysis of Twitter posts related to prescription opioid misuse, (b) Visualization of the geospatial location of Twitter users who post content on MUPO, and (c) Analysis of the social network of Twitter users who tweet about the MUPO. 
 
 Research Questions 
 This project is motivated by the following questions: 
 (i) Can opioid misusers be detected by their Twitter posts? 
-Can opioid misuse be detected from Twitter posts (e.g., hashtags)? 
+Can [prescription] opioid misuse be detected from Twitter posts (e.g., #hashtags)? 
 (ii) Where (geographically) are Twitter users discussing opioid misuse? 
-Can we map the geographic location of opioid misuse from Twitter posts? 
+Can we map the geographic location of [prescription] opioid misuse from Twitter posts? 
 (iii) Can the social network of opioid misuse be mapped from Twitter users? 
-Can the social network of opioid misuse be mapped from Twitter? 
+Can the social network of [prescription] opioid misuse be mapped from Twitter? 
 
-[Liz] : (1) Can we replicate Chary et al. using methods and data available to us? (elaborate) 
-(2) Can we find correlation between Twitter markers of poor emotional regulation and Twitter markers of opioid misuse? (3) Can we detect networks of opioid misusers using Twitter data?
-If opioid use spreads through (real) social networks, is it reflected in digital ones? Can it spread through digital networks? 
+II. Literature Review 
 
-[Nandita] Predicting those who are at risk of opioid misuse. using Twitter data to geographically identify the users at risk using keywords, which can be used to recognised relevant tweets.
+The misuse and abuse of opioids in the U.S. is a crisis with serious public health consequences. In 2015, an estimated 2 million Americans suffered from substance use disorders related to prescription opioid pain relievers [1,2]. Of patients legitimately prescribed opioids for chronic pain, between 21% to 29% misused them, 8% to 12% developed an opioid use disorder, and approximately 4% to 6% transitioned to heroin [13,14]. Mobile health applications that monitor medication consumption have been developed to detect potential medication abuse [15].
 
-II. Literature Review (2-4 paragraphs) and includes:
-1. Establish the field you are working in - if little research has been done on your topic, find what comes closest
+Infodemiology, broadly, the analysis of internet-sourced health data for public health research, is still in its infancy. One of the best known infodemiological successes is the forecast of flu outbreaks by analyzing the correlation between the frequency of flu-related Twitter posts and official reports of influenza-like-illness from the CDC [5,6]. This research suggests that Twitter data can supplement official reports by providing information about the spread of flu 1 to 2 weeks earlier than the CDC-ILI. Because pharmaceutical manufacturers are obliged to monitor the safety of their drugs both before and after their release into the market, a field known as pharmacovigilance, the tools of infodemiology were quickly taken up in this field. Sarker et al [4] provide a methodological review studies using social media for pharmacovigilance, in which they point out that most studies rely on supervised learning with expert medical annotation of social media data. 
 
-Fields: Infodemiology, Toxicovigilance, 
-Drug Addiction, Emotion Regulation
-Prescription Opioid Misuse, Social Networks, 
+In the area of prescription opioid misuse (MUPO), several works stand out. Chary et al. [9] estimated misuse of prescription opioids from tweets, successfully incidence of tweets indicating opioid misuse with geographic incidence of opioid misuse as documented by the National Surveys on Drug Usage and Health (NSDUH). They used a customized version of Jiang-Conrath similarity [33] to determine the “kernal-weighted semantic distance” between tweets and then used k-means clustering to separate tweets in in opioid-misuse and non-opioid misuse categories. Sarker et al [17] came up with a supervised classification technique to distinguish posts suggesting MUPO from non-MUPO posts. Sarker and Gonzalez extended this work to present corpi for mining drug-related knowledge from Twitter using the word2vec tool to train shallow neural networks with two layers. [27] They have continued to enhance these models since publication, and made their trained models available to researchers at https://data.mendeley.com/datasets/dwr4xn8kcv/3. These models can be used for natural language processing using the gensim python library.
 
-2. Cite at least 6 ACADEMIC, PEER REVIEWED RESEARCH PAPERS and at least one paper for each topic area your work falls into, including methodology
-Methodological studies, explain the method that was proposed and how it was tested
-Empirical studies, indicate what data was analyzed, what research question was asked, and what was found
-Conceptual studies, indicate what was claimed, on what basis
+Correlating twitter behavior with public health data requires that the twitter data be tied to geographic locations. Twitter geolocation is disabled by default and only a small number of users choose to enable it. Leetaru et al. [34] estimate that about 2% of tweets include geographic metadata, and.Chary et al. [9] reported the same prevalence of GPS-tagged data. Chary et al. used Carmen [18] to geolocate tweets without geodata. Carmen is a library for geolocating tweets, available in both Java and Python implementations, which  Given a tweet, Carmen will return Location objects that represent a physical location. Carmen infers structured location information (country, state, county, city) using geocoordinates (if available) and and user profile information, but not tweet content. In an early paper on use of Twitter to explore health-related topics, Prier et al. [35] used the Twitter search API’s parameter to retrieve tweets on a state-by-state basis. Twitter geosearch method is proprietary, but the Twitter search API documentation [36] suggests a combination of device/gps coordinates, user provided profile location, and network/ip address are probably used to location to determine tweets that fit within the geocode search parameter.
 
-Paragraph 1: Prescription Opioid Misuse, - Liz, Sean
-The misuse and abuse of opioids in the U.S. is a crisis with serious public health consequences. In 2015, an estimated 2 million Americans suffered from substance use disorders related to prescription opioid pain relievers [1,2]. Of patients legitimately prescribed opioids for chronic pain, between 21 to 29 percent misused them, 8 to 12 percent developed an opioid use disorder, and approximately 4 to 6 percent transitioned to heroin [12,13]. Mobile health applications that monitor medication consumption have been developed to detect potential medication abuse [14]. Social media data has also been used as an early-warning system to forecast flu outbreaks by analyzing correlations between the frequency of flu-related Twitter posts and official reports of influenza-like-illness from the CDC [3,4]. This research suggests that Twitter data can provide valuable information about the spread of flu 1 to 2 weeks earlier than the CDC-ILI, that helps to supplement official reports. In this section we review similar research that used Twitter posts to track social media content related to the misuse of prescription opioids. 
+Like other behaviors, opioid misuse may spread by social contact. In terms of contagious disease, spreading or diffusion occurs within contact networks of direct person-to-person interaction or other indirect pathways [19]. In the case of opioids, rather than describing persons as infected or uninfected, people may be considered as more or less susceptible to misuse, dependence, and addiction, depending on individual and environmental factors [20]. Furthermore, the structure of the contact network can influence epidemic spreading [21]. The “small-world” property of many networks describes how distant nodes in a network is reduced by the pattern of connections within the network. For example, any two random acquaintances in a social network are connected, on average, by five to six intermediaries [22]. Contact networks of drug use may have small-world properties as a few highly connected nodes can rapidly transmit contagion (i.e., drugs) throughout the network [23]. In the case of simple contagion, weak ties among acquaintances or infrequent associations can also provide shortcuts between distant nodes within the network [24], and facilitate the spread of contagion or drug use. Social media research suggests that discussion of prescription drug abuse on Twitter is potentially reinforcing of medication abuse within an online social network [12]. Experimental evidence has also shown that the structure of an artificially constructed online community influenced the spreading of behavior, as individuals who received reinforcement from multiple connections within their social network were more likely to adopt a behavior [25]. Behavior also spread farther and faster through with small-world networks that are clustered and latticed than random networks.
 
-[Liz] co-occurrence of terms suggesting emotional regulation deficits with terms suggesting opioid misuse, in the same people or in the same networks, with the idea that word use in tweets could be used to identify those at risk for opioid misuse.
+3. GAP in the literature 
 
-%[15] Garland, E.L., Bryan, C.J., Nakamura, Y., Froeliger, B., and Howard, M. O. %Deficits in autonomic indices of emotion regulation and reward processing associated %with prescription opioid use and misuse. Psychopharmacology (2017) 234: 621. %https://doi.org/10.1007/s00213-016-4494-4 DOI: https://doi.org/10.1007/s0021 
+Past research has analyzed the textual content of Twitter posts related to MUPO, the geographical location of Twitter users posting about MUPO, yet few studies have analyzed the structure of the social network of relations among Twitter users discussing MUPO. The present study addresses this gap in the literature by integrating different approaches to investigating MUPO in social media. Our proposal includes text analysis, geospatial mapping and network analysis to gain a better understanding of the structure of relations among Twitter users, to identify measures of centrality and community structure. 
 
+III. Data Description (2-4 paragraphs)
 
-Paragraph 2: Infodemiology, Toxicovigilance - Liz
+Twitter provides a massive amount of information about individuals broadcasting their opinions, moods, and activities [31]. This information is spatial as well as temporal. This project will analyse tweets between year 2015 to 2016 having at least one of the following keywords. (NSDUH for 2017 data is not yet available, so we will restrict our Twitter search to the most recent period for which we have correlate data available.) Twitter API will be used to extract the dataset. Our keyword list is derived from Chary et al. [9],  Mackey et al. [11] and ten most common prescription opioids from NSDUH-2015 [30] lists of opioid-detection keywords. The target terms to investigate are: oxycodone, oxycontin; hydrocodone, vicodin; codeine, percodan; percocet; lortab; lorcet; morphine, oxymorphone, hydromorphone, demerol, dilaudid; fentanyl, methadone; lomotil; kadian; avinza; duragesic; tramadol, buprenorphine, propoxyphene, roxanol.
 
-%[16] Eysenbach, G. (2009). Infodemiology and Infoveillance: Framework for an Emerging %Set of Public Health Informatics Methods to Analyze Search, Communication and %Publication Behavior on the Internet. Journal of Medical Internet Research, 11(1), e11. %http://doi.org/10.2196/jmir.1157 
+We will use the methodology described by Sarker et al [27] to enhance the list with common misspellings, and web resources to identify common street names for the most commonly misused opioids, aiming for a final keyword list of 20-15 terms. We will also use latitude and longitude information of users from Twitter metadata. The spatial information will be used to map the geographic locations where opioid misuse has been taking place. We will also extract the network structure of relations among Twitter users. 
 
-%[17] Sarker, A., Ginn, R., Nikfarjam, A., O’Connor, K., Smith, K., Jayaraman, S., %Upadhaya, T., and Gonzalez, G. Utilizing social media data for pharmacovigilance: A %review, Journal of Biomedical Informatics, Volume 54, 2015, Pages 202-212, %https://doi.org/10.1016/j.jbi.2015.02.004 
-%http://www.sciencedirect.com/science/article/pii/S1532046415000362 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Chary et al. 
-
-
-Paragraph 3: Mapping Geospatial Location, Carmet, etc. - Nandita
-
-[7] Chary, M., Genes, N., Giraud-Carrier, C., Hanson, C., Nelson, L. S., and Manini, A. F. Epidemiology from Tweets: Estimating Misuse of Prescription Opioids in the USA from Social Media. Journal of Medical Toxicolology. (2017) 13: 278. https://doi.org/10.1007/s13181-017-0625-5 
-
-[18] Dredze M, Paul MJ, Bergsma S, Tran H. Carmen: a twitter geolocation system with applications to public health. In AAAI workshop on expanding the boundaries of health informatics using AI. (HIAI). 2013 Jun 29 (pp. 20–24).
-
-%[9] Sarker, A., O’Connor, K., Ginn, R., Scotch, M., Smith, K., Malone, D., and %Gonzalez, G. (2016).
-%Social Media Mining for Toxicovigilance: Automatic Monitoring of Prescription %Medication Abuse from Twitter. Drug Safety, 39, 231-240. %https://link.springer.com/article/10.1007/s40264-015-0379-4
-
-%[10] Mackey, T. K., Kalyanam, J., Katsuki, T., and Lanckriet G. Twitter-Based Detection %of Illegal Online Sale of Prescription Opioid. AJPH (2017). 107(12), %1910-1915.Published Online: November 08, 2017.
-%http://ajph.aphapublications.org/doi/full/10.2105/AJPH.2017.303994 
-
-Paragraph 4: Network Structure, Community Detection, Spreading and Diffusion - Sean
-
-Like other behaviors, opioid misuse spreads by social contact. In terms of contagious disease the spreading or diffusion occurs within a network directly by person-to-person contact and indirectly by other pathways [19]. In the case of opioids, rather than describing persons as either infected or uninfected, it may be useful to consider people as more or less susceptible to misuse, dependence, or addiction, depending on individual and environmental factors [20]. Furthermore, the structure of the contact network can influence epidemic spreading [21]. The “small-world” property of many networks describes how distance nodes in a network is reduced by the pattern of connections within the network. For example, any two random acquaintances in a social network are connected, on average, by five to six intermediaries [22]. Contact networks of drug use may have small-world properties as a few highly connected nodes can rapidly transmit contagion (i.e., drugs) throughout the network [23]. In the case of simple contagion, weak ties among acquaintances or infrequent associations can also provide shortcuts between distant nodes within the network [24], and facilitate the spread of contagion or drug use. Social media research suggests that discussion of prescription drug abuse on Twitter is potentially reinforcing within an online social network [11]. Experimental evidence has also shown that the structure of an artificially constructed online community influenced the spreading of behavior, as individuals who received reinforcement from multiple connections within their social network were more likely to adopt a behavior [25]. Behavior also spreads farther and faster through with small-world networks that are clustered and latticed than random networks.
-
-
-
-3. Identify the GAP in the literature that your project addresses:
-E.g., This is known about A, and that is known about B, but little is known about the relationship of A to B.  (This is the gap your study will start to fill)
-
-Past research has analyzed the textual content of Twitter posts related to MUPO, the geographical location of Twitter users posting about MUPO, yet to current knowledge, few studies have analyzed the structure of the social network of relations among Twitter users discussing MUPO. The present study addresses this gap in the literature by integrating different approaches to investigating MUPO in social media, including text analysis, geospatial mapping and network analysis to gain a better understanding of the structure of relations among Twitter users, to identify measures of centrality and community structure. 
-
-III. Data Description should be 2-4 paragraphs and include:
-Describe your publically available Twitter data subset.
-Describe how the data is subset and justify your decisions. Your data may be temporally subset, meaning you collect "tweets" from a period of time. Your data may be subset by certain feature, meaning you only collect data from certain set of users, hashtags, categories. etc.
-
-[Nandita] Network may show opioid usage relationship with emotions (sad, frustration, lonely) and or with situations (abuse, lonely, jobless, breakup, etc.) and or with other drugs (cocaine, mariujana, etc.).
-
-The data will be extracted from Twitter API based on the following key terms [see Chary et al.]: 
-
-Painkillers: painkiller*; pain killer*; narcotic painkiller*; oxycontin; vicodin; percodan; percocet; darvon; lortab; lorcet; dilaudid; demerol; lomotil; kadian; avinza; codeine; duragesic; methadone
-[11] Hanson et al.
-
-
-"[Survey] respondents indicated all prescription opioids they had ever misused from a list of 13 categories, with brand examples and street names: oxycodone (Oxycontin), oxycodone (Percocet, Percodan, Roxicet), hydrocodone (Vicodin, Lortab), propoxyphene (Darvocet, Darvon), acetaminophen with codeine (Tylenol with Codeine), Meriperidine (Demerol), hydromorphone (Dilaudid), norphindin, methadone, morphine (MS-Contin, Kadian, Avinza), fentanyl (Duragesic), fentanyl lollipop (Actiq), and tramadol (Ultram). 
-
-%[26] Lord, S., Brevard, J., & Budman, S. (2011). Connecting to Young Adults: An Online Social %Network Survey of Beliefs and Attitudes Associated With Prescription Opioid Misuse Among College %Students. Substance Use & Misuse, 46(1), 66–76. http://doi.org/10.3109/10826084.2011.521371 
-
-
-IV. Research Design and Methods should be 2-4 paragraphs and include: 
-Describe main inference or analysis you would like to make with data. This is the "end goal" of the project. You don't have to know how you're going to get there, just what your main goal will be. For Robinson's Trump tweet analysis, the main goal was to identify Tweets written by Trump. For Culotta's flu paper, main goal was to see if tweets about flu and flu outbreaks were correlated. What do you want to do with data?
-
-The main goals of the project are to conduct textual analysis of Twitter posts based on MUPO keywords to provide data for visualizing the geospatial location of Twitter users, and analysis of the social network of opioid misuse.   
-
-Features to be extracted from Twitter data: KEYWORDS and what transformations TEXT ANALYSIS to do to reach your analytical goal. It's possible, but unlikely, that you can just use the raw data from the social media site as input to your analysis, but you will more likely have to transform the data for it to be usable. Will you use word counts? Do the data come with built-in features (author, time of posting, hashtags) that will be useful? Will you analyze your data as a network?
-
-Text analysis of Twitter posts into some kind of index for analysis, correlation, or prediction
-(A) Textual analysis - Liz 
-Twitter dataset based on keywords related to misuse of prescription opioids (MUP) 
-Preprocessing, frequency distributions, histograms, 
-(clustering, dimension reduction?)
-
-%[27] Abeed Sarker, Graciela Gonzalez, A corpus for mining drug-related knowledge from %Twitter chatter: Language models and their utilities, Data in Brief, Volume 10, 2017, %Pages 122-131, ISSN 2352-3409, https://doi.org/10.1016/j.dib.2016.11.056 
-%http://www.sciencedirect.com/science/article/pii/S2352340916307168
-
-
-
-(B) Geospatial Visualization - Nandita
-Extracting latitude, longitude data
-
-
-
-
-(C) Network Analysis and Visualization - Sean 
-Extracting network structure
-Betweenness centrality, Community structure, 
-
-A comparison of supervised learning classification models opioid misuse and abuse revealed that treatment, heroin use, cocaine use, and tranquilizers were important features for classifying MUPO [27]. 
-%[28] Shiverick, S. M. (2017). Using machine learning classification of opioid addiction %for big data health analytics. In Use Cases in Big Data Software and Analytics,  vol. %3, edited by G. von Laszewski, pp. 272-282. Indiana University-Bloomington.
-
-%[25]  Centola, D. (2010). The Spread of Behavior in an Online Social Network %Experiment. Science, New Series, Vol. 329(5996) (3 September 2010), pp. 1194-1197
-%http://image.sciencenet.cn/olddata/kexue.com.cn/upload/blog/file/2010/12/20101221103229%35115.pdf
-
-
-
-
-VI. Conclusion (2-3 paragraphs) and includes: - Liz
-Reiterate the importance or significance of your proposal and provide a brief summary of the entire study.
-Answer:
-Why should your study be done?
-Why are you using the data and research design you have chosen over other options,
-What are some potential real world, theoretical or methodological implications of your study?
-How does your study fit within the broader scholarship about the research problem?
-
-
-
-
-
-
-
-
- \cite{editor00}.
-
-\section{figures}
-
-In Figure \ref{f:fly} we show a fly. Please note that because we use
-just columwidth that the size of the figure will change to the
-columnwidth of the paper once we change the layout to final. CHnaging
-the layout to final should not be done by you. All figures will be
-listed at the end.
 
 %\begin{figure}[!ht]
 %  \centering\includegraphics[width=\columnwidth]{images/fly.pdf}
@@ -247,31 +115,19 @@ Put here an conclusion. Conlcusions and abstracts must not have any
 citations in the section.
 
 
-\begin{acks}
-
-  The authors would like to thank Dr. Gregor von Laszewski for his
-  support and suggestions to write this paper.
-
-\end{acks}
+%\begin{acks}
+%  The authors would like to thank Dr. Gregor von Laszewski for his
+%  support and suggestions to write this paper.
+%\end{acks}
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{report} 
 
 \appendix
-
 We include an appendix with common issues that we see when students
 submit papers. One particular important issue is not to use the
 underscore in bibtex labels. Sharelatex allows this, but the
 proceedings script we have does not allow this.
-
-When you submit the paper you need to address each of the items in the
-issues.tex file and verify that you have done them. Please do this
-only at the end once you have finished writing the paper. To d this
-cange TODO with DONE. However if you check something on with DONE, but
-we find you actually have not executed it correcty, you will receive
-point deductions. Thus it is important to do this correctly and not
-just 5 minutes before the deadline. It is better to do a late
-submission than doing the check in haste. 
 
 %\input{issues}
 
