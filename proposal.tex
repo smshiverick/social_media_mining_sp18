@@ -3,14 +3,14 @@
 \input{format/final}
 
 \begin{document}
-\title{Mapping the Network of Prescription Opioid Misuse on Twitter}
+\title{Mapping the Social Network of Opioid Misuse on Twitter}
 
 
-\author{Liz Supinski, Nandita Sathe, Sean M. Shiverick}
+\author{Liz Supinski, Nandita Sathe, and Sean M. Shiverick}
 \affiliation{%
   \institution{Indiana University-Bloomington}
-  \institution{ILS-Z639: Social Media Mining}
-  \institution{Project Proposal-Group 1}
+  \institution{ILS-Z639: Social Media Mining - Spring 2018}
+  \institution{Project Proposal: Group 1}
 }
 \email{smshiver@indiana.edu}
 
@@ -35,7 +35,7 @@ Twitter}
 
 Over the past two decades, prescription opioid abuse and addiction in the U.S. 
 has become a health crisis of epidemic proportion. Since 1999, the number of 
-overdose deaths from prescription opioids such as oxycodone and hydrocodone, 
+overdose deaths from prescription opioids, such as oxycodone and hydrocodone, 
 has more than quadrupled \cite{nida18, cdc18}. Social media media mining (SMM) 
 has been used to address public health concerns through “infodemiology” and 
 “toxicovigilance”, which involves informatics for purposes of epidemiology, 
@@ -65,10 +65,10 @@ of the social network of Twitter users who tweet about the MUPO.
 
 \subsection{Research Questions} 
 \begin{enumerate}
-    \item "Can prescription opioid misuse be detected by Twitter posts?" 
+    \item Can prescription opioid misuse be detected by Twitter posts? 
     \item Can we map the geographic location of  Twitter users discussing 
-    prescription opioid misuse?" 
-    \item "Can the social network of [prescription] opioid misuse be mapped 
+    prescription opioid misuse? 
+    \item Can the social network of [prescription] opioid misuse be mapped 
     from Twitter users?  
 \end{enumerate}
 
@@ -103,8 +103,8 @@ supervised learning with expert medical annotation of social media data
 In the area of prescription opioid misuse (MUPO), several works stand out. 
 Chary and colleagues estimated misuse of prescription opioids from tweets, 
 successfully detecting the incidence of tweets indicating opioid misuse with 
-geographic incidence of opioid misuse as documented by the National Surveys 
-on Drug Usage and Health (NSDUH)\cite{chary17}. This study used a customized 
+geographic incidence of opioid misuse as documented by the National Survey 
+on Drug Use and Health (NSDUH) \cite{chary17}. This study used a customized 
 version of Jiang-Conrath similarity algorithm \cite{jiang97} to determine the 
 ``kernal-weighted semantic distance'' between tweets and then used k-means 
 clustering to separate tweets in opioid-misuse and non-opioid misuse 
@@ -114,9 +114,10 @@ posts \cite{sarker15}. Sarker and Gonzalez (2017) extended this work to present
 corpi for mining drug-related knowledge from Twitter using the `word2vec` tool 
 to train shallow neural networks with two layers \cite{sarker17} They have 
 continued to enhance these models since publication, and made their trained 
-models available to researchers at 
-\url{https://data.mendeley.com/datasets/dwr4xn8kcv/3}. These models can be 
-used for natural language processing using the `gensim` python library.
+models available to researchers online 
+(\url{https://data.mendeley.com/datasets/dwr4xn8kcv/3}). 
+These models can be used for natural language processing using the `gensim` 
+python library.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -125,19 +126,19 @@ data be tied to geographic locations. Twitter geolocation is disabled by
 default and only a small number of users choose to enable it. It is estimated 
 that only about 2 percent of tweets include geographic metadata, with the 
 same prevalence found for GPS-tagged data \cite{chary17, leetaru13}. 
-Chary and colleagues used a software program called Carmen to geolocate tweets 
-without geodata. Carmen is a library for geolocating tweets, available in both 
-Java and Python implementations which, given a tweet, will return Location 
-objects that represent a physical location \cite{dredze13}. Carmen infers 
-structured location information (country, state, county, city) using geo-
-coordinates (if available) and and user profile information, but not tweet 
+Chary and colleagues used a software program called `Carmen` to geolocate 
+tweets without geodata. Carmen is a library for geolocating tweets, available 
+in both Java and Python implementations which, given a tweet, will return 
+Location objects that represent a physical location \cite{dredze13}. Carmen 
+infers structured location information (country, state, county, city) using 
+geocoordinates (if available) and and user profile information, but not tweet 
 content. In an early paper on use of Twitter to explore health-related topics, 
 Prier et al. (2011) used the Twitter search API’s parameter to retrieve tweets 
 on a state-by-state basis \cite{prier11}. Twitter geosearch method is 
-proprietary, but the Twitter search API documentation suggests a 
-combination of device/gps coordinates, user provided profile location, and 
-network/ip address are probably used to location to determine tweets that fit 
-within the geocode search parameter \cite{twitterGet}.
+proprietary, but the Twitter search API documentation suggests a combination 
+of device/gps coordinates, user provided profile location, and network/ip 
+address are probably used to location to determine tweets that fit within 
+the geocode search parameter \cite{twitterGet}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -148,21 +149,21 @@ the case of opioids, rather than describing persons as infected or uninfected,
 people may be considered as more or less susceptible to misuse, dependence, and 
 addiction, depending on individual and environmental factors \cite{volkow14}. 
 Furthermore, the structure of the contact network can influence epidemic 
-spreading \cite{watts98}. The “small-world” property of many networks describes 
-how distant nodes in a network is reduced by the pattern of connections within 
-the network; as any two random acquaintances in a social network are connected, 
-on average, by five to six intermediaries \cite{tramil69}. Contact networks of 
-drug use may have small-world properties as a few highly connected nodes can 
-rapidly transmit contagion (i.e., drugs) throughout the network \cite{shaham03}. 
-For simple contagion, weak ties among acquaintances or infrequent associations 
-can also provide shortcuts between distant nodes within the network 
-\cite{granovetter73}, and facilitate the spread of contagion or drug use. 
-Social media research suggests that discussion of prescription drug abuse on 
-Twitter is potentially reinforcing of medication abuse within an online social 
-network \cite{hanson13}. Experimental evidence has also shown the structure of 
-an artificially constructed online community influenced the spreading of 
-behavior, as individuals who received reinforcement from multiple connections 
-within their social network were more likely to adopt a behavior 
+spreading \cite{watts98}. The \emph{small-world} property of many networks 
+describes how distant nodes in a network is reduced by the pattern of connections 
+within the network; as any two random acquaintances in a social network are 
+connected, on average, by five to six intermediaries \cite{tramil69}. Contact
+networks of drug use may have small-world properties as a few highly connected 
+nodes can rapidly transmit contagion (i.e., drugs) throughout the network 
+\cite{shaham03}. For simple contagion, weak ties among acquaintances or 
+infrequent associations can also provide shortcuts between distant nodes within 
+the network \cite{granovetter73}, and facilitate the spread of contagion or 
+drug use. Social media research suggests that discussion of prescription drug 
+abuse on Twitter is potentially reinforcing of medication abuse within an 
+online social network \cite{hanson13}. Experimental evidence has also shown 
+the structure of an artificially constructed online community influenced the 
+spreading of behavior, as individuals who received reinforcement from multiple 
+connections within their social network were more likely to adopt a behavior 
 \cite{centola10}. Behavior also spread farther and faster through with 
 small-world networks that are clustered and latticed than random networks.
 
@@ -182,27 +183,28 @@ to identify measures of centrality and community structure.
 
 \section{Data Description} 
 
-Twitter provides a massive amount of information about individuals broadcasting 
-their opinions, moods, and activities \cite{widener14}. This information is 
-spatial as well as temporal. This project will analyze tweets between year 
-2015 to 2016 including between 10 to 20 of the following keywords described
-below (NSDUH data for 2017 is not yet available, so we will restrict our 
-Twitter search to the most recent period for which we have correlate data 
-available.) Twitter API will be used to extract the dataset. Our keyword list 
-is derived from lists of opioid-detection keywords used in past research 
-\cite{chary17, mackey17, lord11}, and the ten most common prescription opioids 
-from NSDUH-2015 \cite{shiverick17}. The target terms for our investigation are: `oxycodone`, `oxycontin`, `hydrocodone`, `vicodin`, `codeine`, `percodan`, 
+Twitter provides a massive amount of information about individuals 
+broadcasting their opinions, moods, and activities \cite{widener14}. This 
+information is spatial as well as temporal. This project will analyze tweets 
+between year 2015 to 2016 based on the following keywords below. We will use 
+the Twitter API to extract the dataset. Our keyword list is derived from 
+opioid-detection keywords in past research \cite{chary17, mackey17, lord11}, 
+and ten most common prescription opioids from NSDUH-2015 \cite{shiverick17}
+(NSDUH data for 2017 was not available, so we used recent data from 2015). 
+The target terms for our investigation are: 
+`oxycodone`, `oxycontin`, `hydrocodone`, `vicodin`, `codeine`, `percodan`, 
 `percocet`, `lortab`, `lorcet`, `morphine`, `oxymorphone`, `hydromorphone`, 
-`demerol`, `dilaudid`, `fentanyl`, `methadone`, `lomotil`, `kadian`, `avinza`, `duragesic`, `tramadol`, `buprenorphine`, `propoxyphene`, `roxanol`.
+`demerol`, `dilaudid`, `fentanyl`, `methadone`, `lomotil`, `kadian`, `avinza`, 
+`duragesic`, `tramadol`, `buprenorphine`, `propoxyphene`, `roxanol`.
 
-We will use a similar methodology to that described by Sarker and Gonzalez 
-(2015), to enhance the list with common misspellings, and web resources to 
-identify common street names for the most commonly misused opioids, aiming 
-for a final keyword list of 20-15 terms \cite{sarker17}. We will also use 
-latitude and longitude information of users from Twitter metadata 
-\cite{twittergeo}. The spatial information will be used to map the geographic 
-locations where opioid misuse has been taking place. We will also extract the 
-network structure of relations among Twitter users. 
+We will use a methodology similar to that described by Sarker and Gonzalez 
+(2017), to enhance the list by including common street names and misspellings, 
+aiming for a final keyword list of between 15-20 terms \cite{sarker17}. We 
+will also extract latitude and longitude information of users from Twitter 
+metadata \cite{twittergeo}. The spatial information will be used to map the 
+geographic locations of Twitter users posting content about prescription
+opioid misuse. We will also extract data to construct the network structure 
+of relations among Twitter users. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -213,28 +215,27 @@ location of Twitter users, and (iii) analyzing the social network of opioid
 misuse.  
 
 \subsection{Textual analysis} 
-We will preprocess data using the IDIG python module to detect language of 
-tweets and discard non-english tweets. Standard lemmatization, stopword removal 
+We will preprocess data using the `IDIG` python module to detect language of 
+tweets and discard non-English tweets. Standard lemmatization, stopword removal 
 and conversion to lowercase will be done using the NLTK module. We will use 
-Chary et al.’s package for calculating semantic similarity to cluster Tweets
-\cite{chary17}, and may use Sarker and Gonzalez’s trained model in GENSIM 
-to validate those clusters \cite{sarker16b}. We will attempt to use k-means 
-clustering to reduce these to two clusters, MUPO and non-MUPO tweets, for 
-further analysis. If we need to resort to a supervised learning model to 
-separate MUPO and non-MUPO tweets, we will consider using Mechanical Turk to 
-collect classifications, as we do not have access to expert raters, and are 
-curious to see if “layman” judgments are sufficient to build a model which 
-correlates with public health data. 
+a package for calculating semantic similarity to cluster Tweets \cite{chary17}, 
+and may use a trained model in GENSIM to validate those clusters \cite{sarker17}. 
+We will attempt to use k-means clustering to reduce these to two clusters, 
+MUPO and non-MUPO tweets, for further analysis. If we need to resort to a 
+supervised learning model to separate MUPO and non-MUPO tweets, we will 
+consider using Mechanical Turk to collect classifications, as we do not have 
+access to expert raters, and are curious to see if “layman” judgments are 
+sufficient to build a model which correlates with public health data. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Geospatial Visualization}
 
 The project will identify and show the locations where Twitter users have 
 posted about opioid misuse on a map \cite{twittergeo}. We will use Python 
-module Carmen and/or Twitter search API geoquering to increase the number of 
+module Carmen and/or Twitter search API geo-quering to increase the number of 
 tweets with geographic information \cite{dredze13}. In addition to using this 
-data for correlation analysis, we anticipate using the plotly python library to 
-create an interactive map of MUPO data. Our project will use geotagged tweet 
+data for correlation analysis, we anticipate using the `plotly` python library 
+to create an interactive map of MUPO data. Our project will use geotagged tweet 
 location from the following sources: (a) Tweet Location: Twitter provides the 
 option to geo-tag a Tweet as it is posted, (b) Mentioned Location: mention of 
 locations in the Tweet content requires parsing the Tweet message for location 
@@ -261,11 +262,18 @@ learning models, treatment, heroin use, cocaine use, and tranquilizer were
 identified as important features for classifying opioid misuse and abuse 
 \cite{shiverick17}. It is hypothesized that the social network of Twitter 
 users discussing opioid misuse may consist of separate components based on 
-different aspect of opioids use. For example, some Twitter users may discuss 
+different aspects of opioid use. For example, some Twitter users may discuss 
 prescribed medications versus synthetic or illicit opioids, whereas other 
 Twitter users may post content related to treatment and recovery from opioid 
 addiction. Detecting key nodes and edges that connect different components 
 can identify different clusters or communities of opioid misuse on Twitter.
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \caption{Network of Twitter Users Associated with Opioid Hashtag - 
+  Observatory on Social Media IUNI}
+  \label{f:Figure1}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
