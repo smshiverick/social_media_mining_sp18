@@ -37,8 +37,8 @@ Over the past two decades, prescription opioid abuse and addiction in the U.S.
 has become a health crisis of epidemic proportion. Since 1999, the number of 
 overdose deaths from prescription opioids, such as oxycodone and hydrocodone, 
 has more than quadrupled \cite{nida18, cdc18}. Social media media mining (SMM) 
-has been used to address public health concerns through “infodemiology” and 
-“toxicovigilance”, which involves informatics for purposes of epidemiology, 
+has been used to address public health concerns through ``infodemiology'' and 
+``toxicovigilance'', which involves informatics for purposes of epidemiology, 
 including strategies for monitoring patterns and prevalence of medication abuse 
 \cite{eysenbach09, sarker16}. For example, researchers have tracked the outbreak 
 of flu epidemics using internet searches and Twitter posts 
@@ -65,11 +65,11 @@ of the social network of Twitter users who tweet about the MUPO.
 
 \subsection{Research Questions} 
 \begin{enumerate}
-    \item Can prescription opioid misuse be detected by Twitter posts? 
-    \item Can we map the geographic location of  Twitter users discussing 
-    prescription opioid misuse? 
-    \item Can the social network of [prescription] opioid misuse be mapped 
-    from Twitter users?  
+    \item \emph{Can opioid misuse be detected by Twitter posts?} 
+    \item \emph{Can the geographic location of opioid misuse be mapped 
+    from Twitter posts?} 
+    \item \emph{Can the social network of opioid misuse be mapped from 
+    Twitter users?}  
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -111,13 +111,13 @@ clustering to separate tweets in opioid-misuse and non-opioid misuse
 categories. In a different study, Sarker et al. came up with a supervised 
 classification technique to distinguish posts suggesting MUPO from non-MUPO 
 posts \cite{sarker15}. Sarker and Gonzalez (2017) extended this work to present 
-corpi for mining drug-related knowledge from Twitter using the `word2vec` tool 
-to train shallow neural networks with two layers \cite{sarker17} They have 
+corpi for mining drug-related knowledge from Twitter using the \emph{word2vec} 
+tool to train shallow neural networks with two layers \cite{sarker17} They have 
 continued to enhance these models since publication, and made their trained 
 models available to researchers online 
 (\url{https://data.mendeley.com/datasets/dwr4xn8kcv/3}). 
-These models can be used for natural language processing using the `gensim` 
-python library.
+These models can be used for natural language processing using the 
+\emph{gensim} python library.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -126,17 +126,17 @@ data be tied to geographic locations. Twitter geolocation is disabled by
 default and only a small number of users choose to enable it. It is estimated 
 that only about 2 percent of tweets include geographic metadata, with the 
 same prevalence found for GPS-tagged data \cite{chary17, leetaru13}. 
-Chary and colleagues used a software program called `Carmen` to geolocate 
+Chary and colleagues used a software package called \emph{Carmen} to geolocate 
 tweets without geodata. Carmen is a library for geolocating tweets, available 
 in both Java and Python implementations which, given a tweet, will return 
 Location objects that represent a physical location \cite{dredze13}. Carmen 
 infers structured location information (country, state, county, city) using 
 geocoordinates (if available) and and user profile information, but not tweet 
 content. In an early paper on use of Twitter to explore health-related topics, 
-Prier et al. (2011) used the Twitter search API parameter to retrieve tweets 
+Prier and colleagues used the Twitter search API parameter to retrieve tweets 
 on a state-by-state basis \cite{prier11}. Twitter geosearch method is 
 proprietary, but the Twitter search API documentation suggests a combination 
-of device/gps coordinates, user provided profile location, and network/ip 
+of device/gps coordinates, user provided profile location, and network/IP 
 address are probably used to location to determine tweets that fit within 
 the geocode search parameter \cite{twitterGet}.
 
@@ -191,11 +191,11 @@ the Twitter API to extract the dataset. Our keyword list is derived from
 opioid-detection keywords in past research \cite{chary17, mackey17, lord11}, 
 and ten most common prescription opioids from NSDUH-2015 \cite{shiverick17}
 (NSDUH data for 2017 was not available, so we used recent data from 2015). 
-The target terms for our investigation are: 
-`oxycodone`, `oxycontin`, `hydrocodone`, `vicodin`, `codeine`, `percodan`, 
-`percocet`, `lortab`, `lorcet`, `morphine`, `oxymorphone`, `hydromorphone`, 
-`demerol`, `dilaudid`, `fentanyl`, `methadone`, `lomotil`, `kadian`, `avinza`, 
-`duragesic`, `tramadol`, `buprenorphine`, `propoxyphene`, `roxanol`.
+The target terms for our project are: \emph{
+oxycodone, oxycontin, hydrocodone, vicodin, codeine, percodan, 
+percocet, lortab, lorcet, morphine, oxymorphone, hydromorphone, 
+demerol, dilaudid, fentanyl, methadone, lomotil, kadian, avinza, 
+duragesic, tramadol, buprenorphine, propoxyphene, roxanol}.
 
 We will use a methodology similar to that described by Sarker and Gonzalez 
 (2017), to enhance the list by including common street names and misspellings, 
@@ -239,9 +239,9 @@ to create an interactive map of MUPO data. Our project will use geotagged tweet
 location from the following sources: (a) Tweet Location: Twitter provides the 
 option to geo-tag a Tweet as it is posted, (b) Mentioned Location: mention of 
 locations in the Tweet content requires parsing the Tweet message for location 
-names, including nicknames, and (c) Profile Location: Twitter Profile has a 
-\emph{location} setting that can be filled out by the account owner; however, 
-this information is not always provided \cite{widener14}. 
+names, including nicknames, and (c) Profile Location: Twitter users can 
+activate a \emph{location} setting for their account, but this information 
+is not always provided \cite{widener14}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Network Analysis} 
@@ -270,7 +270,7 @@ can identify different clusters or communities of opioid misuse on Twitter.
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
-  \caption{Network of Twitter Users Associated with Opioid Hashtag - 
+  \caption{Sample Network of Twitter Users Associated with Opioid Hashtag - 
   Observatory on Social Media IUNI}
   \label{f:Figure1}
 \end{figure}
@@ -287,13 +287,13 @@ explore the structure of MUPO social networks, a nearly-unexplored direction
 to date. 
 
 By integrating methods of existing research and using updated data, our project
-will provide additional support for the validity of twitter monitoring for MUPO. 
-If successful, our project could supplement existing efforts to
-develop early warning systems for new hotspots of MUPO in social media. More
-braodly, it could help inform university health officials to monitor changes in 
-MUPO behaviors in student populations, and perhaps aid clinical monitoring of 
-non-cancer chronic pain patients, and other individuals at risk for prescription 
-opioid misuse, abuse, and addiction. 
+will provide additional support for the validity of twitter monitoring for the
+misuse of prescription opioids. If successful, our project could supplement 
+existing efforts to develop early warning systems for new MUPO hotspots. More 
+broadly, the results may help inform university health officials about
+monitoring changes in MUPO behaviors in student populations, and perhaps aid 
+clinical monitoring of non-cancer chronic pain patients, and other individuals 
+at risk for opioid misuse and abuse. 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
