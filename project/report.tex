@@ -375,7 +375,7 @@ was stripped of URLs and mentions, changed to lowercase and then NLTK was used
 to token, remove stopwords and stem (using the Porter stemmer) the remaining text. 
 Then emoticon text and hashtags (each, by definition, a single word) were added 
 to the tweet-text derived tokens to generate a full set of tokens for each tweet.
- 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Method and Results}
@@ -450,42 +450,80 @@ is not always provided \cite{widener14}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Network Analysis} 
 
-The third part of the project involves extracting the network of connections 
-between Twitter users posting about opioid misuse. This network is expected to 
-be a directed, weighted graph, with several connected components. It may be 
-appropriate to examine the network flow, determine the flow quantity, and 
-measure the flow to each edge using a maximum flow algorithm such as the Ford-
-Fulkerson algorithm \cite{zafarani14}. In addition, the Bridge detection 
-algorithm can be used to identify underlying structure in the network by 
-systematically removing key nodes or edges that connect components within the 
-network. Other network characteristics of interest are density, connectedness, 
-centrality, and community structure \cite{golbeck13}. Nodes with high 
-betweenness centrality connect different clusters, and their removal can
-isolate separate components or communities. In a comparison of supervised 
-learning models, treatment, heroin use, cocaine use, and tranquilizer were 
-identified as important features for classifying opioid misuse and abuse 
-\cite{shiverick17}. It is hypothesized that the social network of Twitter 
-users discussing opioid misuse may consist of separate components based on 
-different aspects of opioid use. For example, some Twitter users may discuss 
-prescribed medications versus synthetic or illicit opioids, whereas other 
-Twitter users may post content related to treatment and recovery from opioid 
-addiction. Detecting key nodes and edges that connect different components 
-can identify different clusters or communities of opioid misuse on Twitter.
+In this section, we examine the network of connections among Twitter users 
+sharing mentions about the misuse of prescription opioids. The network analysis 
+and creation of the adjacency matrix were implemented in an interactive Python 
+notebook, \emph{SMM-Project-TweetMatcher-Mentions.ipynb}. An initial network 
+was constructed from a data set of 16,964 cleaned tweet with 17 features
+(in CSV format, saved as a pickle file: `SMM-cleanedTweets-16964.pkl'). The 
+data set was opened in pandas and saved as a data frame object that was 
+filtered to select only tweets that included mentions, which returned 3176 
+tweets. An adjacency matrix was created by pairing `userName' and tweet `txt' 
+as a list of tuples with the zip method. A function called `TweetMatcher()` 
+was used to iterate through the list of tweet, and extract the user name and 
+mention included in each text, and append them in a sepearate line of a new 
+list called ‘myMentions’, that consisted of 4598 userName-mentions pairs. 
+This adjacency matrix was used to create a directed graph (DiGraph) in 
+networkX. The network graph was written to .gml file and imported into 
+Gephi for visualization. The resulting network consisted of 6091 nodes and 
+4105 edges. The average out degree was 0.674, network diameter was 1, the 
+modularity coefficient was 0.994, with 2011 components, and an average path 
+length of 1. The nodes were ranked by color and size according to out-degree,
+and the Yifan Hu layout was used to orient the graph display.
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
-  \caption{Sample Network of Twitter Users Associated with Opioid Hashtag - 
-  Observatory on Social Media IUNI}
+  \caption{Network of Twitter Mentions Related to Misuse of Prescription 
+  Opioids (MUPO)}
   \label{f:Figure1}
 \end{figure}
 
+Figure 1 shows the full directed network of tweet mentions related to misuse
+of prescription opioids (MUPO). As figure 1 shows, the graph consists of a 
+large number of low degree nodes with only one or two mentions, and a small 
+number of nodes with a larger number of mentions; however, the graph does 
+not possess small-world properties as it consists of largely disconnected 
+nodes, with a connected component toward the center of the graph. 
+Initially, we hypothesized the social network of Twitter user MUPO mentions 
+would have several connected components based on different aspects of opioid use.  
+To examine connections among user mentions, the network was filtered in Gephi 
+to select the largest giant component, which is shown in Figure 2. The giant 
+filtered component consisted of 454 nodes (7.5 \%) and 462 edges (11.25 \%). 
+The nodes in Figure 2  The giant component shows a small number of users 
+with an out-degree greater than 10, and a small number of nodes with in-degree 
+greater than 10. Given that the edges are directed, the ``hubs'' with 
+large out-degree do not form bridges between different components. What we
+see instead suggests several disconnected conversations directed in different
+directions. Although a small number of mentions are directed a legitimate 
+agencies related to opioid addiction and the opioid crisis (e.g., CDCgov, 
+CDC-eHealth, Opioid Task Force, NIDA-news), a large number of mentions are 
+directed at news outlets (BostonGlobe, CNN, NYTimes, LATimes, ViceNews), or 
+political candidates (e.g., realDonaldTrump, HillaryClinton). 
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
-  \caption{Sample Network of Twitter Users Associated with Opioid Hashtag - 
-  Observatory on Social Media IUNI}
+  \caption{Largest Component of the Network of Twitter Mentions Related to 
+  Misuse of Prescription Opioids (MUPO)}
   \label{f:Figure2}
 \end{figure}
+
+Additional data cleaning was performed based on a classification of tweets
+with MUPO versus non-MUPO content (described above), resulting in a final 
+data set of 15247 tweets. Of these 2127 (14\%) were identified as actual 
+MUPO related content, 93 (4\%) of these included mentions. An 29 additional
+tweets were identified as deriving song lyrics and removed. A third network
+was constructed from the adjacency matrix for 64 MUPO tweets with mentions. 
+The graph was created in NetworkX, written to gml file, and imported to 
+Gephi for visualization. The resulting network consisted of 131 nodes with
+71 edges, with an average out-degree of 0.542; the modularity coefficient 
+was 0.981, and the graph consisted of 60 components. The Fruchterman-
+Reingold algorithm was used for the graph layout. This graph is shown in
+Figure 3, and shows a large number of nodes with only one out-degree, and 
+a small number of nodes with an out-degree of 2 or 3. The graph no longer
+contains a giant connected component, and the reduced nature of this 
+directed network does not support discussion of network flow, centrality, 
+or community structure \cite{golbeck13, zafarani14} as it consists largely 
+of many disconnected nodes, each with only a small number of mentions. 
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
@@ -513,6 +551,42 @@ broadly, the results may help inform university health officials about
 monitoring changes in MUPO behaviors in student populations, and perhaps aid 
 clinical monitoring of non-cancer chronic pain patients, and other individuals 
 at risk for opioid misuse and abuse. 
+ 
+To do social science with Twitter data I think we need to understand more about 
+what twitter posts mean. As we discussed, they have all the drawbacks of any 
+self-report data, PLUS the fact that they may be deliberately dishonest–
+pretending to be cool, or pretending to be clean. Song lyrics may be being used 
+to reflect some sentiment elsewhere or overall in the song, but the opoid-included 
+lyric is simply the most recognizable short reference to that song. It might also 
+be interesting to see if song-lyric including tweets now have additional 
+content since the twitter character limit doubled.
+ 
+, some Twitter users may discuss 
+prescribed medications versus synthetic or illicit opioids, whereas other 
+Twitter users may post content related to treatment and recovery from opioid 
+addiction. Detecting key nodes and edges that connect different components 
+can identify different clusters or communities of opioid misuse on Twitter.
+
+
+
+Nodes with high 
+betweenness centrality connect different clusters, and their removal can
+isolate separate components or communities. 
+
+In a comparison of supervised 
+learning models, treatment, heroin use, cocaine use, and tranquilizer were 
+identified as important features for classifying opioid misuse and abuse 
+\cite{shiverick17}. 
+ 
+ 
+Why do people post lyrics on Twitter anyway? 
+
+
+typically for one of two reasons- 1.) They’ve run out of things to say 
+2.) They think it makes them sound interesting
+“People like quoting song lyrics as Facebook/Twitter updates ” from 
+ 
+ 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
