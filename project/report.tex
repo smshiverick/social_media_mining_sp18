@@ -1,0 +1,563 @@
+\documentclass[sigconf]{acmart}
+
+\input{format/final}
+
+\begin{document}
+\title{Mapping the Social Network of Opioid Misuse on Twitter}
+
+
+\author{Liz Supinski, Nandita Sathe, and Sean M. Shiverick}
+\affiliation{%
+  \institution{Indiana University-Bloomington}
+  \institution{ILS-Z639: Social Media Mining - Spring 2018}
+  \institution{Project Proposal: Group 1}
+}
+\email{smshiver@indiana.edu}
+
+% The default list of authors is too long for headers}
+\renewcommand{\shortauthors}{Supinski, Sathe, Shiverick}
+
+
+\begin{abstract}
+This paper provides a sample of a \LaTeX\ document which conforms, somewhat 
+loosely, to the formatting guidelines for ACM SIG Proceedings.
+\end{abstract}
+
+\keywords{Infodemiology, Prescription Opioids, Opioid Misuse, Social Media 
+Mining}
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+Over the past two decades, prescription opioid abuse and addiction in the U.S. 
+has become a health crisis of epidemic proportion. Since 1999, the number of 
+overdose deaths from prescription opioids, such as oxycodone and hydrocodone, 
+has more than quadrupled \cite{nida18, cdc18}. Social media media mining (SMM) 
+has been used to address public health concerns through ``infodemiology'' and 
+``toxicovigilance'', which involves informatics for purposes of epidemiology, 
+including strategies for monitoring patterns and prevalence of medication abuse 
+\cite{eysenbach09, sarker16}. For example, researchers have tracked the outbreak 
+of flu epidemics using internet searches and Twitter posts 
+\cite{culotta10, paul14, lazer14}. Twitter data has also been used to track 
+the expression of migraine headaches \cite{nascimento14}, detect misuse 
+and abuse of prescription opioids \cite{sarker16, chary17, dzierak17}, and 
+monitor illegal online sales of prescription opioids \cite{mackey17}. 
+The relationship between Twitter posts and health outcomes is largely 
+correlational, yet some research suggests that discussion of opioid misuse 
+on Twitter may provide reinforcement for actual misuse of opioids 
+\cite{hanson13}. Additional evidence would help to clarify the social network 
+of Twitter users and the contexts of prescription opioid misuse. 
+
+This project seeks to examine the relations among social media users posting 
+content related to the misuse of prescription opioids (MUPO). Mapping social 
+media content related to prescription opioid use may help detect individuals 
+at risk for misusing prescription opioids, and identify factors related to 
+opioid addiction. The main goal of this project is to map the social network
+of prescription opioid misuse on Twitter. This proposal outlines several steps 
+toward accomplishing this goal, which include: (a) Textual analysis of Twitter 
+posts related to prescription opioid misuse, (b) Visualization of the 
+geospatial location of Twitter users who post content on MUPO, and (c) Analysis 
+of the social network of Twitter users who tweet about the MUPO. 
+
+\subsection{Research Questions} 
+\begin{enumerate}
+    \item \emph{Can opioid misuse be detected by Twitter posts?} 
+    \item \emph{Can the geographic location of opioid misuse be mapped 
+    from Twitter posts?} 
+    \item \emph{Can the social network of opioid misuse be mapped from 
+    Twitter users?}  
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Literature Review} 
+
+The misuse and abuse of opioids in the U.S. is a crisis with serious public 
+health consequences. In 2015, an estimated 2 million Americans suffered from 
+substance use disorders related to prescription opioid pain relievers 
+\cite{nida18, cdc18}. Of patients legitimately prescribed opioids for chronic 
+pain, between 21 to 29 percent misused them, 8 to 12 percent developed an 
+opioid use disorder, and approximately 4 to 6 percent transitioned to heroin 
+\cite{vowles15, carlson16}. Mobile health applications that monitor medication 
+consumption have been developed to detect potential medication abuse 
+\cite{varshney13}.
+
+Infodemiology, broadly, the analysis of internet-sourced health data for public 
+health research, is still in its infancy. One of the best known infodemiological 
+successes is the forecast of flu outbreaks by analyzing the correlation between 
+the frequency of flu-related Twitter posts and official reports of influenza-
+like-illness from the CDC \cite{culotta10, paul14}. This research suggests that 
+Twitter data can supplement official reports by providing information about the 
+spread of flu 1 to 2 weeks earlier than the CDC-ILI. Because pharmaceutical 
+manufacturers are obliged to monitor the safety of their drugs both before and 
+after their release into the market, a field known as pharmacovigilance, the 
+tools of infodemiology were quickly taken up in this field. Sarker and 
+colleagues (2016) provide a methodological review studies using social media 
+for pharmacovigilance, in which they point out that most studies rely on 
+supervised learning with expert medical annotation of social media data 
+\cite{sarker16}. 
+
+In the area of prescription opioid misuse (MUPO), several works stand out. 
+Chary and colleagues estimated misuse of prescription opioids from tweets, 
+successfully detecting the incidence of tweets indicating opioid misuse with 
+geographic incidence of opioid misuse as documented by the National Survey 
+on Drug Use and Health (NSDUH) \cite{chary17}. This study used a customized 
+version of Jiang-Conrath similarity algorithm \cite{jiang97} to determine the 
+``kernal-weighted semantic distance'' between tweets and then used k-means 
+clustering to separate tweets in opioid-misuse and non-opioid misuse 
+categories. In a different study, Sarker et al. came up with a supervised 
+classification technique to distinguish posts suggesting MUPO from non-MUPO 
+posts \cite{sarker15}. Sarker and Gonzalez (2017) extended this work to present 
+corpi for mining drug-related knowledge from Twitter using the \emph{word2vec} 
+tool to train shallow neural networks with two layers \cite{sarker17} They have 
+continued to enhance these models since publication, and made their trained 
+models available to researchers online 
+(\url{https://data.mendeley.com/datasets/dwr4xn8kcv/3}). 
+These models can be used for natural language processing using the 
+\emph{gensim} python library.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Correlating twitter behavior with public health data requires that the twitter 
+data be tied to geographic locations. Twitter geolocation is disabled by 
+default and only a small number of users choose to enable it. It is estimated 
+that only about 2 percent of tweets include geographic metadata, with the 
+same prevalence found for GPS-tagged data \cite{chary17, leetaru13}. 
+Chary and colleagues used a software package called \emph{Carmen} to geolocate 
+tweets without geodata. Carmen is a library for geolocating tweets, available 
+in both Java and Python implementations which, given a tweet, will return 
+Location objects that represent a physical location \cite{dredze13}. Carmen 
+infers structured location information (country, state, county, city) using 
+geocoordinates (if available) and and user profile information, but not tweet 
+content. In an early paper on use of Twitter to explore health-related topics, 
+Prier and colleagues used the Twitter search API parameter to retrieve tweets 
+on a state-by-state basis \cite{prier11}. Twitter geosearch method is 
+proprietary, but the Twitter search API documentation suggests a combination 
+of device/gps coordinates, user provided profile location, and network/IP 
+address are probably used to location to determine tweets that fit within 
+the geocode search parameter \cite{twitterGet}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Like other behaviors, opioid misuse may spread by social contact. Spreading 
+or diffusion of contagious disease occurs within contact networks of direct 
+person-to-person interaction or other indirect pathways \cite{pastor01}. In 
+the case of opioids, rather than describing persons as infected or uninfected, 
+people may be considered as more or less susceptible to misuse, dependence, and 
+addiction, depending on individual and environmental factors \cite{volkow14}. 
+Furthermore, the structure of the contact network can influence epidemic 
+spreading \cite{watts98}, as the \emph{small-world} property of many networks 
+reveals that the distance between nodes is reduced by the pattern of 
+connections within the network. In a social network any two random acquaintances 
+may be connected, on average, by five to six intermediaries \cite{travers69}. 
+Contact networks of drug use may have small-world properties as a few highly 
+connected nodes can rapidly transmit contagion (i.e., drugs) throughout the 
+network \cite{shaham03}. For simple contagion, weak ties among acquaintances or 
+infrequent associations can also provide shortcuts between distant nodes within 
+the network \cite{granovetter73}, and facilitate the spread of contagion or 
+drug use. Social media research suggests that discussion of prescription drug 
+abuse on Twitter is potentially reinforcing of medication abuse within an 
+online social network \cite{hanson13}. Experimental evidence has also shown 
+the structure of an artificially constructed online community influenced the 
+spreading of behavior, as individuals who received reinforcement from multiple 
+connections within their social network were more likely to adopt a health
+behavior \cite{centola10}. Behavior also spreads farther and faster through 
+small-world networks that are clustered and latticed than random networks.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Gap in the Literature} 
+
+The literature reviewed above shows that previous research has analyzed the 
+textual content of Twitter posts related to MUPO, the geographical location of 
+Twitter users posting about MUPO, yet few studies have analyzed the structure 
+of the social network of Twitter users discussing MUPO. The present study will 
+partly replicate previous findings and address this gap in the literature by 
+integrating different approaches to investigating MUPO in social media. Our 
+proposal includes text analysis, geospatial mapping and network analysis to 
+gain a better understanding of the structure of relations among Twitter users, 
+to identify measures of centrality and community structure. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Data Description} 
+
+\subsection{Getting the Data} 
+
+\subsubsection{Data retrieval:}
+Twitter provides a massive amount of information about individuals 
+broadcasting their opinions, moods, and activities \cite{widener14}. 
+This information is spatial as well as temporal. We looked at historical 
+tweets from 2016, as public health data on opiate misuse was available for 
+that period with which we might be able to correlate our results. Thus, we 
+needed to use the \emph{Twitter Full-Archive Search API} rather than the 
+Standard Twitter Search API. We applied for and were granted a Twitter 
+Developer account and then chose to pay for Premium service at the 100-query/
+month level. Our plan was to reserve 50 queries to state level tweet counts 
+in order to normalize our opiate data. Because we were on a Premium plan, 
+we were able to take advantage of longer queries, larger payloads and additional 
+operators that allowed us to more closely tailor our search (See Table 1, 
+below for details). The ability to return only those tweets with either tweet 
+or profile geolocation was especially important, as other studies suggested 
+that as few as 2 percent of tweets were likely to include geodata 
+\cite{chary17, leetaru13}.
+
+\begin{table}[htb]
+  \centering
+  \caption{Twitter Full Archive Free vs. Premium Features}
+  \label{tab:mytable}
+  \begin{tabular*}{\columnwidth}{lll}
+    \toprule
+                      	& Free Sandbox    & Premium \\
+    \midrule
+    Tweets per request	& 100	          & 500     \\
+    Counts vs. data   	& Data only       & Both    \\
+    Query length      	& 128 characters  & 1024 characters \\
+    Operator availability & Standard	  & Premium         \\
+    Rate limit        	& 30 rq/min, 10 rq/sec & 60 rq/min, 10 rq/sec \\
+    Enrichments       	& n/a             & URLs, Polls, Pr Geo \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We used the \emph{TweetSearch} python module, which, ``serves as 
+a wrapper for the Twitter premium and enterprise search APIs''\cite{pkgRef1}. 
+It handles the Premium authentication methods and allows authentication 
+credentials to be stored in a YAML file rather than in the code or in 
+environment variables. It also automatically handles pagination of search 
+results, so when queries generate more results than the results/query limit, 
+it will automatically issue additional requests using the next token, to 
+whatever page limit you set. It also supports the Search Counts endpoint, 
+which we used to fine tune our date range and search parameter to manage our 
+data usage, and which we also planned to use to get the volume of geo-tagged 
+tweets for each state during our studied time period to serve as a 
+denominator to normalize our rates of tweets indicating opioid misuse. The 
+\emph{TweetSearch} module integrates with a \emph{TweetParser} \cite{pkgRef2} 
+from the same team, which allows straightforward parsing of tweet JSON. 
+Our tweet collection notebook parses all the features we anticipated needing 
+from the tweets into dictionaries (one dictionary per tweet) which we store 
+in a list. We then use the csv module to write the list of dictionaries to 
+a csv file (Note: to view this csv in Excel correctly, you need use the 
+``Get External Data from Text'' option, and set all column types to ``text'' 
+prior in the import wizard). In addition, our tweet collection notebook 
+stores the complete JSON for each tweet in case we need to harvest 
+additional attributes later in our analysis. Code for retrieving, parsing 
+and storing tweets can be found in \emph{PullTweetsCommented.ipynb}.
+ 
+\textbf{Tweet Attributes Parsed to CSV:}
+\begin{enumerate}
+  \item tweet ID
+  \item Tweet text  
+  \item Created at date/time
+  \item User Name
+  \item User ID (string)
+  \item Latitude and longitude from geo coordinates
+  \item Latitude and longitude from tweet profile location
+  \item Replied to
+  \item Tweet type
+  \item Mentions (string of userID for all mentions)
+  \item Hashtags
+\end{enumerate} 
+
+Latitude and longitude were used to map geographic locations of Twitter users 
+posting content about prescription opioid misuse. UserNames and mentions were 
+used to map the network of relations among Twitter users. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Preprocessing the data} 
+
+Our keyword list was derived from opioid-detection keywords used in previous 
+research \cite{chary17, mackey17, lord11}, and ten of the most common 
+prescription opioids from NSDUH-2015 \cite{shiverick17}. Following Sarker and 
+Gonzalez (2017), we also enhanced our list of key terms by including common 
+street names and misspellings \cite{sarker17}. We queried the following search 
+terms, restricting our results to tweets in English, from the U.S.:
+
+\begin{table}[htb]
+  \centering
+  \caption{Key Word Twitter Search Terms}
+  \label{my-label}
+  \begin{tabular*}{\columnwidth}{llll}
+    \toprule
+    oxycodone & oxycontin 	& hydrocodone  & vicodin   	\\
+    codeine   & percodan  	& percocet 	& lortab    	\\
+    lorcet	& morphine  & oxymorphone  & hydromorphone \\
+    demerol   & dilaudid  	& fentanyl 	& methadone 	\\
+    lomotil   & kadian    	& avinza   	& duragesic 	\\
+    tramadol  & buprenorphine & propoxyphene & roxanol  \\
+    oxy   	& 512s      	& percs    	& vicos     	\\ 
+    hydros	& lorris    	& norco    	& 357s     	    \\
+    \bottomrule
+  \end{tabular*}
+\end{table}
+
+Initially, we queried tweets from the period 1-1-2016 to 12-31-2016, returning 
+just the first 500 tweets (a single query). As 500 tweets spanned only 5 days, 
+it quickly became clear that we would be unable to retrieve a year’s data with
+the available number of queries. Thus, we ran a counts query with the same 
+search parameters, returning a daily count of the number of tweets matching 
+our query. Using that information, we set date ranges for subsequent queries 
+to maximize the number of tweets we could return using a minimum number of 
+queries. Using this method, we retrieved 19,527 tweets, spanning a period from 
+7-22-2016 to 12-30-2016.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Data cleaning and preparation}
+
+Code for data cleaning and preparation was implemented in an interactive 
+Python notebook, \emph{CleanPrep2.ipynb}. Tweets were saved as a UTF-8 encoded 
+CSV file in order to preserve emoticons, which we thought might be useful when 
+running classification models later. We used the emoji package \cite{pkgRef3} 
+to replace each emoji with a text equivalent. We used an iterative process to 
+clean the tweet dataframe, in which we exported CSV files of tweets, read them 
+to look for patterns of tweets that were off-topic and tagged them manually for 
+removal or developed search terms to identify them. These included mismatches 
+(``oxy'' in the cleaning product ``Oxy Clean'') and popular song lyrics being 
+quoted without additional MUPO content (``Put a ring around codeine''). On 
+inspection, we found, for example, that the vast majority of tweets quoting a 
+popular song had no other content except perhaps mentions, so we chose to drop 
+all matches rather than manually checking all matches to our lyric search terms. 
+This no doubt resulted in us dropping some tweets which might have included 
+usable data. The following table lists the topic/terms and number of tweets 
+removed in each stage of cleaning.
+
+\begin{table}[htb]
+\centering
+\caption{Topics and Terms of Non-MUPO Tweets Removed During Data Cleaning}
+\label{t:mytable}
+\begin{tabular*}{\columnwidth}{ll}
+  \toprule
+  Tweet Text Topic& Removed \\
+  \midrule
+  ``NorCo'' Northern California (non-MUPO) & 1059 \\
+  the Future song ``Codeine Crazy''  & 1088 \\
+  21 Savage song ``Feel it'' & 624 \\
+  21 Savage song ``Ocean Drive''  & 316 \\
+  21 Savage song ``Numb'' & 170 \\
+  Travis Scott, Young Thug song ``Pick Up The Phone'' & 107 \\
+  Blackbear song ``Sniffing Vicodin in Paris'' & 148 \\
+  ``OxyClean'' cleaning product and Occidental College & 275 \\
+  Twitter handles containing ``codeine'' (non-MIUPO) & 313 \\
+  \bottomrule
+\end{tabular*}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The next step was cleaning of geographic data, which was also iterative. We 
+first used a dictionary of just the 50 U.S. states and applied a function to 
+generate a dataframe for manual inspection. Rows missing usable geodata (either 
+no geodata or locations outside the US) were marked with their tweetID, while 
+those needing human parsing were either marked ``Fix Manually'' or marked with 
+whatever string split returned where it was expecting to see a city or state. 
+Those rows were used to generate a list of records to remove, and to add 
+additional rows to the state dictionary we created in order to create a valid 
+state abbreviations for all records. One-hundred and twenty-eight tweets had 
+valid geoPlaces that were not cities or states (typically university or hospital 
+names) or were formatted in a non-standard way. We inspected the dataframe to 
+find them, looked up their actual city/state locations and created coded 
+statements to correct/standardize them.
+ 
+After applying a two-letter state abbreviation to every remaining Tweet, we 
+exported a random sample of 2000 tweets for manual rating. Our team of raters, 
+a middle-aged woman and a twenty-something woman, agreed on definitions for 
+misuse in tweets and between them rated these tweets. Only 422 of the tweets 
+were considered to represent misuse of opiates (MUPO), leaving 1578 non-MUPO 
+tweets. All tweets were then prepared for use in a bag-of-words model. Emoticon 
+text and hashtags were temporarily moved to a new column, and remaining text 
+was stripped of URLs and mentions, changed to lowercase and then NLTK was used 
+to token, remove stopwords and stem (using the Porter stemmer) the remaining text. 
+Then emoticon text and hashtags (each, by definition, a single word) were added 
+to the tweet-text derived tokens to generate a full set of tokens for each tweet.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Method and Results}
+The methods and results are organized according to the main project goals: 
+(A) Textual analysis and classification of Twitter posts based on MUPO keywords, 
+(B) Visualizing the geospatial location of Twitter users posting content about
+MUPO, and (C) Network analysis of relations among Twitter users discussing
+MUPO in their mentions.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Tweet Text Classification}
+ 
+The code for modeling and classification can be found in \emph{Modelling.ipynb}. 
+The tokens field of the dataframe from the data preparation phase was processed 
+to generate lists of all possible unigrams, bigrams and trigrams for each tweet. 
+Then, all n-grams which appeared only once in the data set were removed from 
+the n-grams for each tweet, in order to reduce the number of features (225,753 
+features and 15,283 tweets remained at this point, including 2000 hand-rated
+tweets). The n-gram lists were then turned into a sparse matrix using the 
+\emph{CountVectorizer} method in SciKit-Learn. The hand-rated data was split 
+into 80-20 training and test sets, using stratify as the classes were known to 
+be unbalanced. A Support Vector Machine (SVM) with a linear kernel was trained 
+(with parameters C=1 and gamma=0.2) using 10-fold cross-validation on the 
+training set (Note: limited parameter tuning not shown in the final notebook was 
+attempted, but as results varied little, we used the initial parameter settings). 
+Cross validated accuracy on the training set was 0.839 +/- 0.029, and on the 
+held-out test set accuracy was 0.8325, a modest improvement on a baseline model 
+predicting the majority class, which had an accuracy of 0.79 on the test set. 
+In the interests of time, as other team members needed classified data for 
+subsequent parts of the project, no further feature engineering, model selection 
+or model tuning was carried out. The remaining 13,283 unclassified tweets were 
+labelled using the trained model, and classes were joined to the original 
+dataframe holding the other tweet features. A small amount of manual cleaning 
+had to be done to remove 30-odd tweets which had somehow been duplicated at 
+some point in this pipeline. Data was saved to csv for further work.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\subsubsection{State baselines}
+ 
+We attempted to make use of the Premium search counts query to pull the number 
+of tweets containing geodata in each state during the period of our study. 
+We are calling this ``tweet volume'', in contrast to ``tweet count'' the number 
+of opiate-referring tweets we collected for each state in this study. The code 
+for that process can found in \emph{GetStateCounts.ipynb}. Unfortunately, we 
+ran out of paid queries after retrieving tweet volumes for only the 7 highest-
+volume states. We were able to use this data to evaluate the idea of simply 
+normalizing state tweet counts on population, and found that population would 
+probably provide a reasonable proxy for tweet volume. Additional details are 
+included in Appendix A which provides a table of Tweets Proportional to Tweet 
+Volume and Population.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Geospatial Visualization}
+
+The project will identify and show the locations where Twitter users have 
+posted about opioid misuse on a map \cite{twittergeo}. We will use Python 
+module Carmen and/or Twitter search API geo-quering to increase the number of 
+tweets with geographic information \cite{dredze13}. In addition to using this 
+data for correlation analysis, we anticipate using the `plotly` python library 
+to create an interactive map of MUPO data. Our project will use geotagged tweet 
+location from the following sources: (a) Tweet Location: Twitter provides the 
+option to geo-tag a Tweet as it is posted, (b) Mentioned Location: mention of 
+locations in the Tweet content requires parsing the Tweet message for location 
+names, including nicknames, and (c) Profile Location: Twitter users can 
+activate a \emph{location} setting for their account, but this information 
+is not always provided \cite{widener14}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Network Analysis} 
+
+The third part of the project involves extracting the network of connections 
+between Twitter users posting about opioid misuse. This network is expected to 
+be a directed, weighted graph, with several connected components. It may be 
+appropriate to examine the network flow, determine the flow quantity, and 
+measure the flow to each edge using a maximum flow algorithm such as the Ford-
+Fulkerson algorithm \cite{zafarani14}. In addition, the Bridge detection 
+algorithm can be used to identify underlying structure in the network by 
+systematically removing key nodes or edges that connect components within the 
+network. Other network characteristics of interest are density, connectedness, 
+centrality, and community structure \cite{golbeck13}. Nodes with high 
+betweenness centrality connect different clusters, and their removal can
+isolate separate components or communities. In a comparison of supervised 
+learning models, treatment, heroin use, cocaine use, and tranquilizer were 
+identified as important features for classifying opioid misuse and abuse 
+\cite{shiverick17}. It is hypothesized that the social network of Twitter 
+users discussing opioid misuse may consist of separate components based on 
+different aspects of opioid use. For example, some Twitter users may discuss 
+prescribed medications versus synthetic or illicit opioids, whereas other 
+Twitter users may post content related to treatment and recovery from opioid 
+addiction. Detecting key nodes and edges that connect different components 
+can identify different clusters or communities of opioid misuse on Twitter.
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \caption{Sample Network of Twitter Users Associated with Opioid Hashtag - 
+  Observatory on Social Media IUNI}
+  \label{f:Figure1}
+\end{figure}
+
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+  \caption{Sample Network of Twitter Users Associated with Opioid Hashtag - 
+  Observatory on Social Media IUNI}
+  \label{f:Figure2}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+  \caption{Sample Network of Twitter Users Associated with Opioid Hashtag - 
+  Observatory on Social Media IUNI}
+  \label{f:Figure3}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+
+To date, only a small amount of work using the tools of infodemiology to 
+explore misuse of prescription opioids has been published. We aim to integrate 
+several of the existing approaches to carry out correlational analysis with 
+public health data that differs from others by foregoing the use of expert 
+judges to support classification, and to extend our exploration into study to 
+explore the structure of MUPO social networks, a nearly-unexplored direction 
+to date. 
+
+By integrating methods of existing research and using updated data, our project
+will provide additional support for the validity of twitter monitoring for the
+misuse of prescription opioids. If successful, our project could supplement 
+existing efforts to develop early warning systems for new MUPO hotspots. More 
+broadly, the results may help inform university health officials about
+monitoring changes in MUPO behaviors in student populations, and perhaps aid 
+clinical monitoring of non-cancer chronic pain patients, and other individuals 
+at risk for opioid misuse and abuse. 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{acks}
+  The authors would like to thank Dr. Vincent Malic and J. T. Wolohan 
+  for support and assistance in the completion of this project, and to the
+  reviewers who provided feedback to improve the project proposal.
+\end{acks}
+
+\bibliographystyle{unsrt}
+\bibliography{report} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\section{Appendix A: Tweets Proportional to Population}
+The Table below provides a summary of Tweets Proportional to Tweet 
+Volume and Population, as described in the Classification subsection of 
+the Data Description section.
+
+\begin{table*}[ht]
+\centering
+\caption{Tweets Proportional to Tweet Volume and Population}
+\label{tab:1}
+  \begin{tabular}{lllllll}
+    \toprule
+    State & Tweet Count & Population & (A) Opiate tweets/100k & Tweet Volume & 
+    (B) Opiate tweets/100k & Ratio B/A \\
+    \midrule     
+    CA& 2176& 39,540,000& 5.50& 26,374,150& 8.25& 1.5 \\
+    TX& 2154& 28,300,000& 7.61& 23,279,069& 9.25& 1.22 \\
+    FL& 878& 20,980,000& 4.18& 11,737,449& 7.48& 1.79 \\
+    NY& 775& 19,850,000& 3.9& 13,538,927& 5.72& 1.47 \\
+    GA& 741& 10,430,000& 7.1& 5,660,441& 13.09& 1.84 \\
+    OH& 616& 11,660,000& 5.28& 9,331,571& 6.60 & 1.25 \\
+    PA& 521& 12,810,000& 4.07& 6,457,351& 8.07& 1.98 \\	
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+
+
+
+
+%\input{issues}
+
+\end{document}
