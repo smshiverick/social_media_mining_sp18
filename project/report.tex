@@ -10,7 +10,7 @@
 \affiliation{%
   \institution{Indiana University-Bloomington}
   \institution{ILS-Z639: Social Media Mining - Spring 2018}
-  \institution{Project Proposal: Group 1}
+  \institution{Final Project Report: Group 1}
 }
 \email{smshiver@indiana.edu}
 
@@ -429,6 +429,26 @@ probably provide a reasonable proxy for tweet volume. Additional details are
 included in Appendix A which provides a table of Tweets Proportional to Tweet 
 Volume and Population.
 
+\begin{table*}[ht]
+\centering
+\caption{Tweets Proportional to Tweet Volume and Population}
+\label{tab:1}
+  \begin{tabular}{lllllll}
+    \toprule
+    State & Tweet Count & Population & (A) Opiate tweets/100k & Tweet Volume & 
+    (B) Opiate tweets/100k & Ratio B/A \\
+    \midrule     
+    CA& 2176& 39,540,000& 5.50& 26,374,150& 8.25& 1.5 \\
+    TX& 2154& 28,300,000& 7.61& 23,279,069& 9.25& 1.22 \\
+    FL& 878& 20,980,000& 4.18& 11,737,449& 7.48& 1.79 \\
+    NY& 775& 19,850,000& 3.9& 13,538,927& 5.72& 1.47 \\
+    GA& 741& 10,430,000& 7.1& 5,660,441& 13.09& 1.84 \\
+    OH& 616& 11,660,000& 5.28& 9,331,571& 6.60 & 1.25 \\
+    PA& 521& 12,810,000& 4.07& 6,457,351& 8.07& 1.98 \\	
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -447,6 +467,41 @@ names, including nicknames, and (c) Profile Location: Twitter users can
 activate a \emph{location} setting for their account, but this information 
 is not always provided \cite{widener14}. 
 
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \caption{Number of Tweets by Population (per 100,000)}
+  \label{f:Figure1}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+  \caption{Number of Tweets by Tweet Volume (per 100,000)}
+  \label{f:Figure2}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+  \caption{Choropleth Map of Opiate Tweet Frequency in U.S.}
+  \label{f:Figure3}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure4.pdf}
+  \caption{Choropleth Map of Probable MUPO Tweet Frequency in U.S.}
+  \label{f:Figure4}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
+  \caption{Texas Cities with the Most Tweets Discussing MUPO}
+  \label{f:Figure5}
+\end{figure}
+
+\begin{figure}[!ht]
+  \centering\includegraphics[width=\columnwidth]{images/Figure6.pdf}
+  \caption{California Cities with the Most Tweets Discussing MUPO}
+  \label{f:Figure6}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Network Analysis} 
 
@@ -472,14 +527,14 @@ length of 1. The nodes were ranked by color and size according to out-degree,
 and the Yifan Hu layout was used to orient the graph display.
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure7.pdf}
   \caption{Network of Twitter Mentions Related to Misuse of Prescription 
   Opioids (MUPO)}
-  \label{f:Figure1}
+  \label{f:Figure7}
 \end{figure}
 
-Figure 1 shows the full directed network of tweet mentions related to misuse
-of prescription opioids (MUPO). As figure 1 shows, the graph consists of a 
+Figure 7 shows the full directed network of tweet mentions related to misuse
+of prescription opioids (MUPO). As figure 7 shows, the graph consists of a 
 large number of low degree nodes with only one or two mentions, and a small 
 number of nodes with a larger number of mentions; however, the graph does 
 not possess small-world properties as it consists of largely disconnected 
@@ -487,10 +542,10 @@ nodes, with a connected component toward the center of the graph.
 Initially, we hypothesized the social network of Twitter user MUPO mentions 
 would have several connected components based on different aspects of opioid use.  
 To examine connections among user mentions, the network was filtered in Gephi 
-to select the largest giant component, which is shown in Figure 2. The giant 
+to select the largest giant component, which is shown in Figure 8. The giant 
 filtered component consisted of 454 nodes (7.5 \%) and 462 edges (11.25 \%). 
-The nodes in Figure 2  The giant component shows a small number of users 
-with an out-degree greater than 10, and a small number of nodes with in-degree 
+The giant component in Figure 8 shows a small number of users with an out-
+degree greater than 10, and a small number of nodes with in-degree 
 greater than 10. Given that the edges are directed, the ``hubs'' with 
 large out-degree do not form bridges between different components. What we
 see instead suggests several disconnected conversations directed in different
@@ -501,56 +556,78 @@ directed at news outlets (BostonGlobe, CNN, NYTimes, LATimes, ViceNews), or
 political candidates (e.g., realDonaldTrump, HillaryClinton). 
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure8.pdf}
   \caption{Largest Component of the Network of Twitter Mentions Related to 
   Misuse of Prescription Opioids (MUPO)}
-  \label{f:Figure2}
+  \label{f:Figure8}
 \end{figure}
 
 Additional data cleaning was performed based on a classification of tweets
-with MUPO versus non-MUPO content (described above), resulting in a final 
-data set of 15247 tweets. Of these 2127 (14\%) were identified as actual 
-MUPO related content, 93 (4\%) of these included mentions. An 29 additional
-tweets were identified as deriving song lyrics and removed. A third network
-was constructed from the adjacency matrix for 64 MUPO tweets with mentions. 
-The graph was created in NetworkX, written to gml file, and imported to 
-Gephi for visualization. The resulting network consisted of 131 nodes with
-71 edges, with an average out-degree of 0.542; the modularity coefficient 
-was 0.981, and the graph consisted of 60 components. The Fruchterman-
-Reingold algorithm was used for the graph layout. This graph is shown in
-Figure 3, and shows a large number of nodes with only one out-degree, and 
-a small number of nodes with an out-degree of 2 or 3. The graph no longer
-contains a giant connected component, and the reduced nature of this 
-directed network does not support discussion of network flow, centrality, 
-or community structure \cite{golbeck13, zafarani14} as it consists largely 
-of many disconnected nodes, each with only a small number of mentions. 
+with MUPO versus non-MUPO content (described above), resulting in a final data 
+set of 15,247 tweets. From this final data set, 2127 (14\%) were classified as 
+actual MUPO related content, 93 (4\%) included mentions. An additional 29 
+tweets were identified as deriving from rap song lyrics and removed. A third 
+network was constructed from the adjacency matrix for 64 MUPO tweets with 
+mentions (`smm-misuseTweets-mentions.csv'). The graph was created with NetworkX,
+written to gml file, and imported to Gephi for visualization. The resulting 
+network consisted of 131 nodes with 71 edges, with an average out-degree of 0.542; 
+the modularity coefficient was 0.981, and the graph had 60 components. We used
+the Fruchterman-Reingold algorithm for the graph layout. The graph represented 
+in Figure 9 shows a large number of nodes with only a single out-degree, and a 
+small number of nodes with an out-degree of 2 or 3. The graph no longer had a 
+connected component. This reduced directed network consisted largely of many 
+disconnected nodes, each with only a small number of mentions, which did not
+support analysis of the network flow, centrality, or community structure 
+\cite{golbeck13, zafarani14}. Although some tweets were directed at legitimate 
+agencies such as the Department of Veteran Affairs), there were some mentions 
+in the MUPO tweets directed at questionable figures from popular culture 
+(e.g., ``Eminem'', ``Hulk Hogan'', ``real dope celebrity''). 
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure3.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure9.pdf}
   \caption{Sample Network of Twitter Users Associated with Opioid Hashtag - 
   Observatory on Social Media IUNI}
-  \label{f:Figure3}
+  \label{f:Figure9}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion}
+\section{Discussion}
 
-To date, only a small amount of work using the tools of infodemiology to 
-explore misuse of prescription opioids has been published. We aim to integrate 
-several of the existing approaches to carry out correlational analysis with 
-public health data that differs from others by foregoing the use of expert 
-judges to support classification, and to extend our exploration into study to 
-explore the structure of MUPO social networks, a nearly-unexplored direction 
-to date. 
+This project mapped the misuse of prescription opioids (MUPO) on Twitter.
+Relatively few published studies have used the tools of infodemiology to explore 
+the MUPO in social media. Our study integrated several approaches to better 
+understand what social media can tell us about the structure of interaction on 
+Twitter related to the MUPO. Textual analysis and classification of tweets 
+revealed that approximately 14\% of the tweets in our sample contained MUPO 
+content. Several iterations of data cleaning were required to obtain a data set 
+that filtered out non-MUPO tweets and mentions. The largest proportion of MUPO 
+tweets were observed in the U.S. states with the highest populations, California 
+and Texas, which may not necessarily reflect the states most deeply impacted by 
+the MUPO and opioid overdose deaths more broadly. Analysis of the mentions among 
+Twitter users discussing the MUPO revealed a highly disconnected network, with 
+a large number of nodes had low-out degrees, with only few users sharing MUPO 
+mentions with more than two or three other users. This may be due, in part, to 
+the extensive filtering undertaken to distinguish genuine MUPO in our data from 
+casual mentions about opioid misuse which appeared to indicate references to 
+subcultures in music or popular culture. 
 
-By integrating methods of existing research and using updated data, our project
-will provide additional support for the validity of twitter monitoring for the
-misuse of prescription opioids. If successful, our project could supplement 
-existing efforts to develop early warning systems for new MUPO hotspots. More 
-broadly, the results may help inform university health officials about
-monitoring changes in MUPO behaviors in student populations, and perhaps aid 
-clinical monitoring of non-cancer chronic pain patients, and other individuals 
-at risk for opioid misuse and abuse. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Limitations}
+ 
+
+Can opioid misuse be detected by Twitter posts?
+Can the geographic location of opioid misuse be mapped from Twitter posts? 
+Can the social network of opioid misuse be mapped from Twitter users?
+
+ 
+Given that geospatial mapping was a central goal of our project, by necessity, 
+we extracted tweets that included latitude and longitude, whereas only a 
+small proportion of tweets over all (1\%-2\%) include geospatial information.
+ 
+ 
+ 
  
 To do social science with Twitter data I think we need to understand more about 
 what twitter posts mean. As we discussed, they have all the drawbacks of any 
@@ -585,7 +662,45 @@ Why do people post lyrics on Twitter anyway?
 typically for one of two reasons- 1.) They’ve run out of things to say 
 2.) They think it makes them sound interesting
 “People like quoting song lyrics as Facebook/Twitter updates ” from 
- 
+
+
+ network of relations of Twitter users posting 
+content related prescription opioid misuse on Twitter. 
+to the , in an effort to  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+
+Mapping social 
+media content related to prescription opioid use may help detect individuals 
+at risk for misusing prescription opioids, and identify factors related to 
+opioid addiction. The main goal of this project is to 
+of 
+sought to  outlines several steps 
+toward accomplishing this goal, which include: (a) Textual analysis of Twitter 
+posts related to prescription opioid misuse, (b) Visualization of the 
+geospatial location of Twitter users who post content on MUPO, and (c) Analysis 
+of the social network of Twitter users who tweet about the MUPO. 
+
+
+We aim to ut correlational analysis with 
+public health data that differs from others by foregoing the use of expert 
+judges to support classification, and to extend our exploration into study to 
+explore the structure of MUPO social networks, a nearly-unexplored direction 
+to date. 
+
+By integrating methods of existing research and using updated data, our project
+will provide additional support for the validity of twitter monitoring for the
+misuse of prescription opioids. If successful, our project could supplement 
+existing efforts to develop early warning systems for new MUPO hotspots. More 
+broadly, the results may help inform university health officials about
+monitoring changes in MUPO behaviors in student populations, and perhaps aid 
+clinical monitoring of non-cancer chronic pain patients, and other individuals 
+at risk for opioid misuse and abuse. 
+
+
+
+
  
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
