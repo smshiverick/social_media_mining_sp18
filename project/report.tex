@@ -454,18 +454,28 @@ Volume and Population.
 
 \subsection{Geospatial Visualization}
 
-The project will identify and show the locations where Twitter users have 
-posted about opioid misuse on a map \cite{twittergeo}. We will use Python 
-module Carmen and/or Twitter search API geo-quering to increase the number of 
-tweets with geographic information \cite{dredze13}. In addition to using this 
-data for correlation analysis, we anticipate using the `plotly` python library 
-to create an interactive map of MUPO data. Our project will use geotagged tweet 
-location from the following sources: (a) Tweet Location: Twitter provides the 
-option to geo-tag a Tweet as it is posted, (b) Mentioned Location: mention of 
-locations in the Tweet content requires parsing the Tweet message for location 
-names, including nicknames, and (c) Profile Location: Twitter users can 
-activate a \emph{location} setting for their account, but this information 
-is not always provided \cite{widener14}. 
+The section identifies the geospatial mapping of Twitter users posting about 
+opioid misuse. Twitter’s premium authentication helped us searching the tweets 
+that have profile geolocation \cite{twittergeo}. This eliminated the need to 
+use Carmen \cite{dredze13} for geo-tagging the tweets wherever geolocation is 
+absent. The project uses users’ profile locations. Plotly python library has 
+been used to create an interactive map of MUPO data. A dictionary available 
+on Git is used to convert state abbreviation to the full state name 
+\cite{CodeRef1}. Profile locations in the form of “City, State, Country“ are 
+split to obtain only the city names. Figure 1 and Figure 2 show state baseline 
+data of “tweet volume” in contrast to “tweet count” the number of opiate-
+referring tweets we collected for each state in this study. 
+
+Table 4 shows the data by normalizing state tweet counts on population. 
+The Same data is the input for these charts in ‘Tweetstats.csv”. As shown in Figure 1, Georgia has highest number of opiates related tweet per 100 thousand tweets (tweet volume). Texas followed by California are at 2nd and 3rd position regarding number of opiates related tweets as compared to the tweets volume. In New York, number of opiates related tweets out of the tweets volume is least. 
+Figure 2 shows number of tweets with respect to the population of state. It is not surprising that second most populous state Texas has most number of opiates related tweets per 100 thousand people. However Georgia with least population has second highest number of tweets is quite surprising.
+MUPO data is plotted on two different US states map. One map shows locations and frequency of all the users tweeting about opioids. The other shows frequency of tweets discussing probable misuse of opioids. 
+Figure 3 shows state-wise distribution of opiates related tweets. Color scale from dark blue to faint blue shows the highest to lowest tweet frequency. Analysis shows that California and Texas are the states tweeting about opiates the most, followed by Florida and New York. Mouse hover will show name of state and total number of tweets.
+State-wise distribution in Figure 4 shows California and Texas tweeting the most about probable opioids misuse. MUPO Data of these two states further is further sliced down to show top ten cities with highest frequency of opiates tweets (Figure 5 and Figure 6). Los Angeles and Huston top the list in their respective states. 
+
+
+
+
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
@@ -593,33 +603,29 @@ in the MUPO tweets directed at questionable figures from popular culture
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 
-This project mapped the misuse of prescription opioids (MUPO) on Twitter.
-Relatively few published studies have used the tools of infodemiology to explore 
-the MUPO in social media. Our study integrated several approaches to better 
+This project applied the tools of infodemiology in social media to explore the 
+misuse of prescription opioids (MUPO) and mapped the relations among Twitter 
+users discussing MUPO online. We integrated several approaches to better 
 understand what social media can tell us about the structure of interaction on 
-Twitter related to the MUPO. Textual analysis and classification of tweets 
-revealed that approximately 14\% of the tweets in our sample contained MUPO 
-content. Several iterations of data cleaning were required to obtain a data set 
-that filtered out non-MUPO tweets and mentions. The largest proportion of MUPO 
-tweets were observed in the U.S. states with the highest populations, California 
-and Texas, which may not necessarily reflect the states most deeply impacted by 
-the MUPO and opioid overdose deaths more broadly. Analysis of the mentions among 
-Twitter users discussing the MUPO revealed a highly disconnected network, with 
-a large number of nodes had low-out degrees, with only few users sharing MUPO 
+Twitter related to MUPO. Textual analysis and classification of tweets revealed 
+that approximately 14\% of the tweets in our sample contained MUPO content. 
+Several iterations of data cleaning were required to obtain a data set that 
+filtered out non-MUPO tweets and mentions. The largest proportion of MUPO 
+tweets were observed in California and Texas, the U.S. states with the highest 
+populations, which may not necessarily reflect the states with the highest 
+rates of actual MUPO and opioid overdose deaths. Analysis of the mentions 
+among Twitter users discussing MUPO revealed a highly disconnected network, 
+with a large number of low out-degree nodes, with only few users sharing MUPO 
 mentions with more than two or three other users. This may be due, in part, to 
-the extensive filtering undertaken to distinguish genuine MUPO in our data from 
+the extensive filtering undertaken to distinguish genuine MUPO in our data from
 casual mentions about opioid misuse which appeared to indicate references to 
-subcultures in music or popular culture. 
-
-
+subcultures in music or popular culture. Considering the mentions of opiates 
+more broadly, there were a small number of Twitter users who mentioned opiates 
+to a somewhat larger number of other users (10 or more), but this was not 
+related to MUPO, which was the focus of our project.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Limitations}
- 
-
-Can opioid misuse be detected by Twitter posts?
-Can the geographic location of opioid misuse be mapped from Twitter posts? 
-Can the social network of opioid misuse be mapped from Twitter users?
 
  
 Given that geospatial mapping was a central goal of our project, by necessity, 
@@ -670,6 +676,11 @@ to the , in an effort to
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
+
+Can opioid misuse be detected by Twitter posts?
+Can the geographic location of opioid misuse be mapped from Twitter posts? 
+Can the social network of opioid misuse be mapped from Twitter users?
+
 
 Mapping social 
 media content related to prescription opioid use may help detect individuals 
