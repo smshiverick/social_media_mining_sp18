@@ -6,7 +6,7 @@
 \title{Mapping the Social Network of Opioid Misuse on Twitter}
 
 
-\author{Liz Supinski, Nandita Sathe, and Sean M. Shiverick}
+\author{Elizabeth Supinski, Nandita Sathe, and Sean M. Shiverick}
 \affiliation{%
   \institution{Indiana University-Bloomington}
   \institution{ILS-Z639: Social Media Mining - Spring 2018}
@@ -19,8 +19,22 @@
 
 
 \begin{abstract}
-This paper provides a sample of a \LaTeX\ document which conforms, somewhat 
-loosely, to the formatting guidelines for ACM SIG Proceedings.
+The misuse of prescription opioids (MUPO) on Twitter was examined using
+textual analysis, geospatial mapping, and network visualization of mentions. 
+MUPO and non-MUPO tweets were classified using a supervised-learning model; 
+approximately 14\% of tweets contained MUPO-related content. Geospatial 
+analysis revealed that California and Texas emerged as topmost states to tweet 
+about probable misuse of opioids. Frequency of opiate-related tweets was 
+not directly proportional to population; Georgia had higher tweet count per 
+100 thousand population than California or New York. The directed network of 
+MUPO-related mentions among Twitter users was largely disconnected, with a 
+large number of low out-degree nodes, and few users sharing MUPO mentions 
+with more than two or three others. Mentions about opioids more broadly were 
+shared in a connected component of users sharing mentions with ten or more 
+other users, and a handful of users receiving more than 10 mentions from 
+others. The network of MUPO mentions was largely disconnected with no
+underlying community structure. 
+
 \end{abstract}
 
 \keywords{Infodemiology, Prescription Opioids, Opioid Misuse, Social Media 
@@ -62,12 +76,12 @@ posts related to prescription opioid misuse, (b) Visualization of the
 geospatial location of Twitter users who post content on MUPO, and (c) Analysis 
 of the social network of Twitter users who tweet about the MUPO. 
 
-\subsection{Research Questions} 
+\textbf{Research Questions:} 
 \begin{enumerate}
-    \item \emph{Can opioid misuse be detected by Twitter posts?} 
-    \item \emph{Can the geographic location of opioid misuse be mapped 
+  \item \emph{Can opioid misuse be detected by Twitter posts?} 
+  \item \emph{Can the geographic location of opioid misuse be mapped 
     from Twitter posts?} 
-    \item \emph{Can the social network of opioid misuse be mapped from 
+  \item \emph{Can the social network of opioid misuse be mapped from 
     Twitter users?}  
 \end{enumerate}
 
@@ -84,19 +98,22 @@ opioid use disorder, and approximately 4 to 6 percent transitioned to heroin
 consumption have been developed to detect potential medication abuse 
 \cite{varshney13}.
 
-The field of infodemiology, broadly considered as the analysis of internet-
-sourced health data for public health research, is still in its infancy. One 
-of the best known infodemiological successes is the forecast of flu outbreaks 
-by analyzing the correlation between the frequency of flu-related Twitter posts 
-and official reports of influenza-like-illness from the CDC \cite{culotta10, 
-paul14}. This research suggests that Twitter data can supplement official 
-reports by providing information about the spread of flu 1 to 2 weeks earlier 
-than the CDC-ILI. Because pharmaceutical manufacturers are obliged to monitor 
-the safety of their drugs both before and after their release into the market,
-a field known as ``pharmacovigilance'', the tools of infodemiology were quickly 
-taken up in this field. Sarker and colleagues (2016) provide a methodological 
-review studies using social media for pharmacovigilance, in which they point 
-out that most studies rely on supervised learning with expert medical annotation 
+The field of infodemiology broadly involves the analysis of internet-sourced 
+health data for public health research, and is still in its infancy. One of 
+the best known infodemiological successes is the forecast of flu outbreaks 
+by analyzing the correlation between the frequency of flu-related Twitter 
+posts and official reports of influenza-like-illness from the CDC 
+\cite{culotta10, paul14}. This research suggests that Twitter data can 
+supplement official reports by providing information about the spread of 
+flu one to two weeks earlier than the official CDC reports of ILI. The 
+current project explored whether Twitter data may provide insight into 
+misuse of opioids or perhaps supplement official reports of MUPO. Because 
+pharmaceutical manufacturers are obliged to monitor the safety of their 
+drugs both before and after their release into the market, a field known as
+``pharmacovigilance'', the tools of infodemiology were quickly taken up 
+in this field. Sarker and colleagues (2016) provide a methodological review
+studies using social media for pharmacovigilance, in which they point out 
+that most studies rely on supervised learning with expert medical annotation 
 of social media data \cite{sarker16}. 
 
 In the area of prescription opioid misuse (MUPO), several works stand out. 
@@ -263,9 +280,9 @@ and storing tweets can be found in \emph{PullTweetsCommented.ipynb}.
   \item Hashtags
 \end{enumerate} 
 
-Latitude and longitude were used to map geographic locations of Twitter users 
-posting content about prescription opioid misuse. UserNames and mentions were 
-used to map the network of relations among Twitter users. 
+Latitude and longitude and geo lookup were used to map geographic locations 
+of Twitter users posting content about prescription opioid misuse. UserNames 
+and mentions were used to map the network of relations among Twitter users. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -275,8 +292,8 @@ Our keyword list was derived from opioid-detection keywords used in previous
 research \cite{chary17, mackey17, lord11}, and ten of the most common 
 prescription opioids from NSDUH-2015 \cite{shiverick17}. Following Sarker and 
 Gonzalez (2017), we also enhanced our list of key terms by including common 
-street names and misspellings \cite{sarker17}. We queried the following search 
-terms, restricting our results to tweets in English, from the U.S.:
+street names \cite{sarker17}. We queried the following search terms, restricting 
+our results to tweets in English, from the U.S.:
 
 \begin{table}[htb]
   \centering
@@ -298,7 +315,7 @@ terms, restricting our results to tweets in English, from the U.S.:
 
 Initially, we queried tweets from the period 1-1-2016 to 12-31-2016, returning 
 just the first 500 tweets (a single query). As 500 tweets spanned only 5 days, 
-it quickly became clear that we would be unable to retrieve a year’s data with
+it quickly became clear that we would be unable to retrieve a year`s data with
 the available number of queries. Thus, we ran a counts query with the same 
 search parameters, returning a daily count of the number of tweets matching 
 our query. Using that information, we set date ranges for subsequent queries 
@@ -335,7 +352,7 @@ removed in each stage of cleaning.
   \toprule
   Tweet Text Topic& Removed \\
   \midrule
-  ``NorCo'' Northern California (non-MUPO) & 1059 \\
+  ``NorCo'' (non-MUPO) Northern California & 1059 \\
   the Future song ``Codeine Crazy''  & 1088 \\
   21 Savage song ``Feel it'' & 624 \\
   21 Savage song ``Ocean Drive''  & 316 \\
@@ -372,9 +389,10 @@ were considered to represent misuse of opiates (MUPO), leaving 1578 non-MUPO
 tweets. All tweets were then prepared for use in a bag-of-words model. Emoticon 
 text and hashtags were temporarily moved to a new column, and remaining text 
 was stripped of URLs and mentions, changed to lowercase and then NLTK was used 
-to token, remove stopwords and stem (using the Porter stemmer) the remaining text. 
-Then emoticon text and hashtags (each, by definition, a single word) were added 
-to the tweet-text derived tokens to generate a full set of tokens for each tweet.
+to tokenize, remove stopwords and stem (using the Porter stemmer) the remaining 
+text. Then emoticon text and hashtags (each, by definition, a single word) were 
+added to the tweet-text derived tokens to generate a full set of tokens for 
+each tweet.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -426,8 +444,8 @@ ran out of paid queries after retrieving tweet volumes for only the 7 highest-
 volume states. We were able to use this data to evaluate the idea of simply 
 normalizing state tweet counts on population, and found that population would 
 probably provide a reasonable proxy for tweet volume. Additional details are 
-included in Appendix A which provides a table of Tweets Proportional to Tweet 
-Volume and Population.
+included in Table 4 which provides a summary of the Tweets Proportional to 
+Tweet Volume and Population.
 
 \begin{table*}[ht]
 \centering
@@ -453,8 +471,8 @@ Volume and Population.
 
 \subsection{Geospatial Visualization}
 
-Twitter's premium authentication helped us in searching for tweets with 
-profile geolocation \cite{twittergeo}. This eliminated the need to use 
+Twitter's premium search helped us in searching for tweets with either
+tweet or profile geolocation \cite{twittergeo}. This eliminated the need to use 
 \emph{Carmen} \cite{dredze13} for geo-tagging the tweets wherever geolocation 
 was absent. We used the Twitter users' profile locations. The \emph{Plotly} python 
 library was used to create interactive maps of MUPO data. A dictionary available on 
@@ -464,13 +482,13 @@ only the city names.
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure1.pdf}
-  \caption{Number of Tweets by Population (per 100,000)}
+  \caption{Number of Tweets by Tweet Volume (per 100,000)}
   \label{f:Figure1}
 \end{figure}
 
 \begin{figure}[!ht]
   \centering\includegraphics[width=\columnwidth]{images/Figure2.pdf}
-  \caption{Number of Tweets by Tweet Volume (per 100,000)}
+  \caption{Number of Tweets by Population (per 100,000)}
   \label{f:Figure2}
 \end{figure}
 
@@ -518,14 +536,14 @@ opiate-related tweets (Figure 5 and Figure 6). Los Angeles and Houston top
 the list in their respective states for highest MUPO-related tweets. 
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure6.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
   \caption{California Cities with the Most Tweets Discussing 
   Misuse of Opiates}
   \label{f:Figure5}
 \end{figure}
 
 \begin{figure}[!ht]
-  \centering\includegraphics[width=\columnwidth]{images/Figure5.pdf}
+  \centering\includegraphics[width=\columnwidth]{images/Figure6.pdf}
   \caption{Texas Cities with the Most Tweets Discussing Misuse of Opiates}
   \label{f:Figure6}
 \end{figure}
@@ -548,7 +566,7 @@ of tuples using the zip method. A function called `TweetMatcher()` was used
 to iterate through the list of tweet, and extract the user name and mention 
 included in each text, and append them in a separate line of a new list called 
 ‘myMentions’, that consisted of 4598 `userName'-`mention' pairs. The adjacency 
-matrix was used to create a directed graph (DiGraph) in \ephm{NetworkX}. 
+matrix was used to create a directed graph (DiGraph) in \emph{NetworkX}. 
 The network graph was written to .gml file and imported into \emph{Gephi} for 
 visualization. The resulting network consisted of 6091 nodes and 4105 edges. 
 The average out degree was 0.674, network diameter was 1, the modularity 
@@ -623,47 +641,46 @@ pseudonyms (e.g., ``Eminem'', ``Hulk Hogan'', ``real dope celebrity'').
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
 
-This project applied the tools of infodemiology in social media to explore the 
-misuse of prescription opioids (MUPO) and map the relations among Twitter 
+This project applied the tools of infodemiology in social media to explore 
+the misuse of prescription opioids (MUPO) and map the relations among Twitter 
 users discussing MUPO online. We integrated several approaches to better 
-understand what social media can tell us about the structure of interaction on 
-Twitter related to MUPO. Textual analysis and classification of tweets revealed 
-that approximately 14\% of the tweets in our sample contained MUPO content. 
-Several iterations of data cleaning were required to obtain a data set that 
-filtered out non-MUPO tweets and mentions. Geospatial analysis revealed that 
-California and Texas emerged as topmost states to tweet about probable misuse
-of opioids. Although these are the two most populous states, the frequency of 
-opiate-related tweets was not directly proportional to population. For example, 
-the tweet count per 100 thousand population was higher for Georgia than 
-California. Similarly, despite the state of New York having a large population, 
-the tweet count ratio per 100 thousand population for New York was lower than 
-for Georgia. Analysis of mentions among Twitter users discussing MUPO revealed 
-a highly disconnected network with a large number of nodes with low out-degree, 
-and few users sharing MUPO mentions with more than two or three other users. 
-Examining mentions about opioids more broadly revealed a central component of 
-users sharing mentions about opioids with ten or more other users, and a 
-handful of users receiving more than 10 mentions from others. Counter to 
+understand what social media can tell us about the structure of interaction 
+on Twitter related to MUPO. Textual analysis and classification of tweets 
+revealed that approximately 14\% of the tweets in our sample contained MUPO 
+content. Several iterations of data cleaning were required to obtain a data 
+set that filtered out non-MUPO tweets and mentions, including casual mentions 
+and indirect references from music lyrics and popular culture. Geospatial 
+mapping revealed that California and Texas emerged as topmost states to tweet 
+about probable misuse of opioids. Although these are the two most populous 
+states, the frequency of opiate-related tweets was not directly proportional to 
+population. For example, the tweet count per 100 thousand population was higher 
+for Georgia than California. Similarly, despite the state of New York having a 
+large population, the tweet count ratio per 100 thousand population for New York
+was lower than for Georgia. Analysis of mentions among Twitter users discussing 
+MUPO revealed a highly disconnected network with a large number of nodes with 
+low out-degree, and few users sharing MUPO mentions with more than two or three 
+other users. Examining mentions about opioids more broadly revealed a central 
+component of users sharing mentions about opioids with ten or more other users, 
+and a handful of users receiving more than 10 mentions from others. Counter to 
 our hypothesis, this largely disconnected network did not reveal underlying 
 community structure or connections between separate components. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The first question we proposed to answer in this project is whether opioid 
-misuse could be detected from Twitter posts. We looked to past studies that 
-examined how social media data was used to forecast outbreaks of flu 
+The first question we sought to answer is whether opioid misuse could be 
+detected from Twitter posts. We looked to past studies that examined how 
+social media data was used to forecast outbreaks of flu 
 \cite{culotta10, paul14}, or how tweets could predict geographic variation 
 in opioid misuse \cite{chary17, sarker16}. Although we were able to classify 
 MUPO tweets from non-MUPO tweets using supervised learning models, several 
-iterations of data cleaning and filtering reduced our sample of Twitter data
-which may have limited the usefulness of the remaining tweets for ascertaining
-the genuineness of actual instances of MUPO. Second, we were able to map
-the frequency of opiate-related tweets by geographic location at the level 
-of state and U.S. cities; however, as described above the frequency of tweets
-by population may not correspond with the actual rates of MUPO by region or 
-tweet volume. Third, we sought to identify the relationships among Twitter 
-users discussing opioid misuse by their mentions, but found a vastly reduced 
-and disconnected network that lacked community structure. Despite an ambitious 
-effort on our part, overall, we encountered some ambiguity in being able to 
+iterations of data cleaning and filtering reduced our sample of Twitter data. 
+Second, we were able to map the frequency of opiate-related tweets by geographic 
+location at the level of state and U.S. cities; however, as described above the 
+frequency of tweets by population may not correspond with the actual rates of 
+MUPO by region or tweet volume. Third, we sought to identify the relationships 
+among Twitter users discussing opioid misuse by their mentions, but found a 
+vastly reduced and disconnected network that lacked community structure. Despite 
+an ambitious effort, overall, we encountered some ambiguity in being able to 
 identify actual opioid misuse, mapping the occurrence of actual misuse from 
 tweet location, and visualizing the social network of relations among twitter 
 users who may be misusing opioids.
@@ -672,70 +689,72 @@ users who may be misusing opioids.
 
 \subsection{Limitations}
 
-Our project had some limitations. First, in examining the MUPO-related tweets 
-and mentions, we encountered numerous instances of opioid misuse from music and 
-popular culture, that were non-MUPO but labeled as MUPO. Twitter data suffers 
-from a common problem encountered with self-report data in the social sciences, 
-namely, people are not always honest in how they represent themselves in surveys
-or online. For example, people tend to exaggerate behavior they perceive as 
-desirable and minimize behaviors perceived as undesirable. In youth culture, 
-this often involves adhering to the norms of a subculture by pretending to be 
-``cool'' or pretending to be ``clean''. Tweets with MUPO-content from song 
-lyrics may reflect some sentiment elsewhere or overall in the song, could
-reflect actual substance use, or an indicator for membership in a subculture; 
-the opoid-included lyric is simply the most recognizable short reference. 
-Another limitation is that, we created successive subsets of the data  initially 
-extracted from Twitter, for the sake of consistency. Given that geospatial 
-mapping was a central goal of our project, by necessity, we extracted tweets 
-that included latitude and longitude, where generally only a small proportion 
-of tweets (1\%-2\%) includes geospatial information. Selecting tweets with 
+A limitation of our project is that, by creating successive subsets of the data 
+initially extracted from Twitter, the size of our subset samples was reduced. 
+Given that geospatial mapping was a central goal of our project, we extracted 
+tweets with latitude and longitude, where generally only a small proportion of 
+tweets (1\%-2\%) includes geospatial information. Selecting tweets with 
 mentions from the subset of tweets with geolocation reduced the sample of 
-tweets for network analysis. In future research, it might be desirable to 
-extract separate samples of tweets with geospatial location and tweets with 
-mentions for network analysis, for more robust samples in each analysis. 
+tweets for network analysis. In future, it may be preferable to extract 
+separate samples of tweets with geospatial location and tweets with mentions 
+for network analysis for more robust samples in each analysis. A second 
+limitation we encountered is that, in identifying MUPO-related tweets and 
+mentions, we found numerous instances of opiate misuse from music and 
+popular culture that were non-MUPO but were classified as MUPO by our learning
+algorithm. A problem with Twitter data, commonly seen with self-report data in 
+the social sciences, is that people are not always honest in how they represent 
+themselves in surveys or online. For example, people tend to exaggerate behavior 
+they perceive as desirable and minimize behaviors perceived as undesirable. 
+In youth culture, this often involves adhering to the norms of a subculture by 
+pretending to be ``cool'' or pretending to be ``clean''. Tweets with MUPO-content 
+from song lyrics may reflect some sentiment elsewhere or overall in the song, 
+may convey identification with or membership in a particular subculture, or 
+could indicate actual substance misuse; the opioid-included lyric is simply 
+the most recognizable reference. Furthermore, visual inspection of our data 
+suggests that many tweets contained humor, irony, or sarcasm; in a future 
+study, it would be interesting to analyze ambiguity and contradiction in 
+tweets with MUPO content to better understand the role of humor and irony 
+in this deadly crisis. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
 
 The misuse and abuse of opioids remains a serious health crisis affecting 
-millions of people in North America. Given the scale of the opioid misuse, 
-abuse, and addition, addressing the opioid crisis will require large scale 
-efforts and interdisciplinary interventions that are well beyond the scope 
-of our project. This project may help to raise awareness of MUPO on social
-media by identifying MUPO-related posts on Twitter, mapping the locations of 
-potential or probable MUPO, and visualizing relations among user discussing 
-MUPO on Twitter. Mapping social media content related to MUPO may not only
-help detect individuals at risk for opioid misuse, abuse, or addiction, 
-but network analysis may help to identify communities and subcultures in 
-which MUPO is regarded as more acceptable, such as was observed in references
-to music lyrics and popular culture. Different communities may be responding
-to MUPO in different ways, either popularizing or romantisizing opiate use, 
-or by addressing the crisis with treatment and interventions, sharing 
-information and references for rehab and detoxification. Given that many 
-patients legitimately prescribed opioids for chronic pain transition to 
-heroin and are at risk for opioid overdose and deaåth, social media may help
-to track instances of MUPO and provide an early warning system for MUPO 
-hotspots. Understanding the network of relations of åusers in social media
-discussing MUPO may provide insight as to how to address the crisis of 
-opioid abuse and addiction from a novel perspective. 
+millions of people in North America. This project may help raise awareness 
+of MUPO on social media by identifying MUPO-related Twitter posts, mapping 
+the locations of potential or probable MUPO, and visualizing relations among 
+users discussing MUPO on Twitter. Mapping social media content related to MUPO 
+may not only help detect individuals at risk for opioid misuse or abuse, but 
+also help to identify the network of communities and subcultures in which MUPO 
+is regarded as more acceptable, as in references to music and popular culture. 
+Different communities may be responding to MUPO in different ways, either 
+popularizing or romantisizing opiate use, or by addressing the crisis with 
+treatment and interventions, sharing information and references for 
+detoxification and recovery. Given that many patients legitimately prescribed 
+opioids for chronic pain transition to heroin and are at risk for opioid 
+overdose death, social media may help provide an early warning system for MUPO 
+hotspots. Applying network analysis to the misuse of prescription opioids on 
+social media may provide insight to the opioid crisis from a novel perspective. 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Contributions}
 
 All team members contributed approximately equally to writing the research 
-proposal and report. Elizabeth Supinski extracted the data from the Twitter 
-API, performed data cleaning and preparation, annotated tweet text, ran the 
-classification models of tweets for MUPO content, and created the Tables. 
-Nandita Sathe set up and explored the use of \emph{Carmen} for geolocating 
-tweets, constructed Geospatial plots and maps (Figures 1-6), and set up of 
-BitBucket for project source collaboration. Sean Shiverick conducted the 
-network analysis, constructed the adjacency matrix and network graph, 
-created network visualizations in \emph{Gephi} (Figures 7-9), and formatted 
-the project proposal and report in ACM Proceedings format in \emph{Sharelatex}.
+proposal and report; each member contributed to the different sections of 
+the project, respectively, in the following order: \textbf{Elizabeth Supinski} 
+extracted the data from the Twitter API, performed data cleaning and 
+preparation, annotated tweet text, ran the classification models of tweets 
+for MUPO content, and created Tables 1-4. \textbf{Nandita Sathe} set up and 
+explored the use of \emph{Carmen} for geolocating tweets, constructed 
+Geospatial plots and maps (Figures 1-6), and set up of \emph{BitBucket} for 
+project source collaboration. \textbf{Sean Shiverick} constructed the adjacency 
+matrix and network graph, conducted the network analysis, created network 
+visualizations in \emph{Gephi} (Figures 7-9), and formatted the project proposal
+and report in ACM Proceedings format in \emph{Sharelatex}.
 
 \begin{acks}
-  The authors would like to thank Dr. Vincent Malic and J. T. Wolohan 
+  The authors would like to thank Dr. Vincent Malic and J.T. Wolohan 
   for support and assistance in the completion of this project, and to 
   the reviewers who provided feedback on the project proposal.
 \end{acks}
@@ -745,35 +764,8 @@ the project proposal and report in ACM Proceedings format in \emph{Sharelatex}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\appendix
-
-\section{Appendix A: Tweets Proportional to Population}
-The Table below provides a summary of Tweets Proportional to Tweet 
-Volume and Population, as described in the Classification subsection of 
-the Data Description section.
-
-\begin{table*}[ht]
-\centering
-\caption{Tweets Proportional to Tweet Volume and Population}
-\label{tab:1}
-  \begin{tabular}{lllllll}
-    \toprule
-    State & Tweet Count & Population & (A) Opiate tweets/100k & Tweet Volume & 
-    (B) Opiate tweets/100k & Ratio B/A \\
-    \midrule     
-    CA& 2176& 39,540,000& 5.50& 26,374,150& 8.25& 1.5 \\
-    TX& 2154& 28,300,000& 7.61& 23,279,069& 9.25& 1.22 \\
-    FL& 878& 20,980,000& 4.18& 11,737,449& 7.48& 1.79 \\
-    NY& 775& 19,850,000& 3.9& 13,538,927& 5.72& 1.47 \\
-    GA& 741& 10,430,000& 7.1& 5,660,441& 13.09& 1.84 \\
-    OH& 616& 11,660,000& 5.28& 9,331,571& 6.60 & 1.25 \\
-    PA& 521& 12,810,000& 4.07& 6,457,351& 8.07& 1.98 \\	
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
-
-
+%\appendix
+%\section{Appendix A: Tweets Proportional to Population}
 
 
 %\input{issues}
